@@ -1,0 +1,55 @@
+name: on-push-workflow
+on:
+  # run on push
+  push:
+    branches:
+      - '**'
+
+jobs:
+  core-pipeline:
+    timeout-minutes: 10
+    name: core pipeline
+    # do not run this job if skip ci is in commit message
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          # get lfs items
+          lfs: true
+          # fetch all commits, slower but required to pass to nx
+          fetch-depth: 0
+
+      - name: setup node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.3'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: report
+        run: nx report
+
+      - name: affected:lint
+        run: nx affected --target=lint --parallel --maxParallel=4
+
+      - name: affected:test
+        run: nx affected --target=test --parallel --maxParallel=4
+
+      - name: affected:build:ci
+        run: nx affected --target=build --parallel --maxParallel=4 -c=ci
+
+      - name: affected:e2e:ci
+        run: nx affected --target=e2e --parallel --maxParallel=4 -c=ci
+
+      - name: affected:deploy:next
+        run: nx affected --target=deploy --parallel --maxParallel=4 -c=next
+
+# TODO: add environment support for `test` `stage` and `prod`
+# TODO: see docs for adding specific deployment pipelines
+
+      
