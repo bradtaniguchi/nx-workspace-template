@@ -1,6 +1,28 @@
 {
   "recommendations": [
+    "aaron-bond.better-comments",
+    "alefragnani.project-manager",
+    "Angular.ng-template",
+    "christian-kohler.path-intellisense",
+    "cssho.vscode-svgviewer",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
+    "GitHub.github-vscode-theme",
+    "GitHub.vscode-pull-request-github",
+    "hangxingliu.vscode-nginx-conf-hint",
+    "johnpapa.angular-essentials",
+    "johnpapa.Angular2",
+    "johnpapa.vscode-peacock",
+    "mhutchie.git-graph",
+    "mikestead.dotenv",
     "nrwl.angular-console",
-    "esbenp.prettier-vscode"
+    "nrwl.angular-console",
+    "PKief.material-icon-theme",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "zhuangtongfa.material-theme"
   ]
 }
