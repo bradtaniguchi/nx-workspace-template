@@ -35,21 +35,45 @@ jobs:
         run: nx report
 
       - name: affected:lint
-        run: nx affected --target=lint --parallel --maxParallel=4
+        run: |
+          nx affected --target=lint \
+            --parallel \
+            --maxParallel=4 \
+            --base=remotes/origin/main \
+            --head=${GITHUB_SHA}
 
       - name: affected:test
-        run: nx affected --target=test --parallel --maxParallel=4
+        run: |
+          nx affected --target=test
+            --parallel \
+            --maxParallel=4 \
+            --base=remotes/origin/main \
+            --head=${GITHUB_SHA}
 
       - name: affected:build:ci
-        run: nx affected --target=build --parallel --maxParallel=4 -c=ci
+        run: |
+          nx affected --target=build
+            --parallel \
+            --maxParallel=4 \
+            --base=remotes/origin/main \
+            --head=${GITHUB_SHA}
 
       - name: affected:e2e:ci
-        run: nx affected --target=e2e --parallel --maxParallel=4 -c=ci
+        run: |
+          nx affected --target=e2e
+            --parallel \
+            --maxParallel=4 \
+            --base=remotes/origin/main \
+            --head=${GITHUB_SHA}
 
       - name: affected:deploy:next
-        run: nx affected --target=deploy --parallel --maxParallel=4 -c=next
+        run: |
+          nx affected --target=deploy
+            --parallel \
+            --maxParallel=4 \
+            --base=remotes/origin/main \
+            --head=${GITHUB_SHA}
 
 # TODO: add environment support for `test` `stage` and `prod`
 # TODO: see docs for adding specific deployment pipelines
 
-      
