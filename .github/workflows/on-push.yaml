@@ -40,8 +40,8 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
 
-      - name: markdown-lint
-        run: npm run lint:markdown
+      - name: markdown:lint
+        run: npm run markdown:lint
 
       - name: affected:lint
         run: |
