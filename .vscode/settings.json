@@ -2,21 +2,22 @@
   "cSpell.words": [
     "Anson",
     "Bradtaniguchi",
-    "Nx",
-    "Nx’s",
-    "Taniguchi's",
     "circleci",
     "codespaces",
     "compodoc",
     "devcontainer",
+    "doctl",
     "frontends",
     "ghpages",
     "lighthouserc",
     "markdownlint",
     "nestjs",
     "nrwl",
+    "Nx",
+    "Nx’s",
     "peaceiris",
     "s",
+    "Taniguchi's",
     "treosh"
   ]
 }
