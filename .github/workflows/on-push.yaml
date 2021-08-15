@@ -41,9 +41,7 @@ jobs:
         run: nx workspace-lint
 
       - name: markdown-lint
-        uses: DavidAnson/markdownlint-cli2-action@v3
-        with:
-          globs: '**/*.md'
+        run: npm run lint:markdown
 
       - name: affected:lint
         run: |

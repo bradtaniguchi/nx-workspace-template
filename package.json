@@ -25,8 +25,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "clean": "npx rimraf dist node_modules/.cache/nx *.logs",
-    "lint:markdown": "npx markdownlint-cli2 **/*.md #node_modules",
-    "lint:markdown-fix": "npx markdownlint-cli2-fix ./**/*.md #node_modules"
+    "markdown:lint": "npx markdownlint-cli2 **/*.md #node_modules",
+    "markdown:lint-fix": "npx markdownlint-cli2-fix ./**/*.md #node_modules"
   },
   "private": true,
   "dependencies": {
