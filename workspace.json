@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "common": "libs/common",
-    "docs-generator": "tools/docs-generator",
     "gh-codespaces": "libs/gh-codespaces"
   },
   "cli": {
