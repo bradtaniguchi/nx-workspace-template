@@ -5,9 +5,11 @@
     "codespaces",
     "compodoc",
     "ghpages",
+    "lighthouserc",
     "nestjs",
     "nrwl",
     "peaceiris",
-    "Taniguchi's"
+    "Taniguchi's",
+    "treosh"
   ]
 }
