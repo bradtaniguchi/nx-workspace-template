@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "strict": true,
-    "paths": {}
+    "paths": {
+      "@nx-workspace-template/common": ["libs/common/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
