@@ -34,8 +34,11 @@ jobs:
       - name: Install Global nx
         run: npm install -g @nrwl/cli
 
-      - name: report
+      - name: nx:report
         run: nx report
+
+      - name: nx:workspace-lint
+        run: nx workspace-lint
 
       - name: affected:lint
         run: |
