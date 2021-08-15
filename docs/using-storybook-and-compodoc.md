@@ -5,7 +5,7 @@ Storybook can be used to help build the UI part of the application.
 ## Installing library support, with doc support
 
 ```bash
-npm install --save-dev @nrwl/storybook @compodoc/compodoc
+npm install --save-dev @nrwl/storybook
 ```
 
 **note** it is required to setup compodoc to be setup **before** running

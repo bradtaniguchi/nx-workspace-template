@@ -23,6 +23,7 @@
     "PKief.material-icon-theme",
     "redhat.vscode-yaml",
     "streetsidesoftware.code-spell-checker",
-    "zhuangtongfa.material-theme"
+    "zhuangtongfa.material-theme",
+    "firsttris.vscode-jest-runner"
   ]
 }
