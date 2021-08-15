@@ -1,6 +1,7 @@
 # Using git-lfs
 
-git-lfs is used to manage large file binaries in git, and automatically works with github.
+git-lfs is used to manage large file binaries in git, and automatically
+works with github.
 
 To set this up locally be sure to install it on your system:
 

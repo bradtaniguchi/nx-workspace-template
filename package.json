@@ -24,7 +24,9 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "clean": "npx rimraf dist node_modules/.cache/nx *.logs"
+    "clean": "npx rimraf dist node_modules/.cache/nx *.logs",
+    "lint:markdown": "npx markdownlint-cli2 **/*.md #node_modules",
+    "lint:markdown-fix": "npx markdownlint-cli2-fix ./**/*.md #node_modules"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "@types/node": "14.14.33",
     "dotenv": "~10.0.0",
     "http-server": "^13.0.0",
+    "markdownlint-cli2": "^0.2.0",
     "prettier": "^2.3.1",
     "rimraf": "^3.0.2",
     "ts-node": "~9.1.1",

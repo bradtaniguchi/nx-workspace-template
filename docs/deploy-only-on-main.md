@@ -3,7 +3,8 @@
 The current workflow is to automatically deploy to the `next` environment
 from `main` (or classically called "master")
 
-To add a step that only executes when a commit is executed at that time, add the following step:
+To add a step that only executes when a commit is executed at that time,
+add the following step:
 
 (example uses gh-pages)
 

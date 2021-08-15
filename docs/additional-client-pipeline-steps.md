@@ -1,7 +1,7 @@
 # Additional Client Pipeline steps
 
-Below are some code snippets that can be used to upgrade the on-push pipeline, to get more
-stats and information during builds.
+Below are some code snippets that can be used to upgrade the on-push pipeline,
+to get more stats and information during builds.
 
 ```yaml
 - name: Upload json-stats

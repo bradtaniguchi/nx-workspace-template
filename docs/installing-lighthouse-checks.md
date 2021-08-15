@@ -1,7 +1,7 @@
 # Installing lighthouse checks
 
-Lighthouse checks can be applied using the files in the `.lighthouse` folder, and can be ran
-inside of a github-action check with code similar to:
+Lighthouse checks can be applied using the files in the `.lighthouse` folder,
+and can be ran inside of a github-action check with code similar to:
 
 ```yaml
  - name: run-lighthouse-ci
