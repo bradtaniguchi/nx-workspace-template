@@ -1,0 +1,22 @@
+{
+  "root": "libs/gh-codespaces",
+  "sourceRoot": "libs/gh-codespaces/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/gh-codespaces/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/gh-codespaces"],
+      "options": {
+        "jestConfig": "libs/gh-codespaces/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:lib"]
+}
