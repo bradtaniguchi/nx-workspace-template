@@ -1,4 +1,4 @@
-name: on-push-workflow
+name: on-push
 on:
   # run on push
   push:
