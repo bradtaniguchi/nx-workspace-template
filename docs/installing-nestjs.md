@@ -12,6 +12,9 @@ and creating an next project:
 nx generate @nrwl/nest:application <nest-app> --strict
 ```
 
+For more specific documentation with nestjs, checkout the docs:
+<https://docs.nestjs.com/>
+
 ## More docs
 
 <https://nx.dev/latest/angular/nest/overview>
