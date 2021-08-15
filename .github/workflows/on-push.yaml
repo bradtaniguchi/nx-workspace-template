@@ -47,7 +47,7 @@ jobs:
 
       - name: affected:test
         run: |
-          nx affected --target=test
+          nx affected --target=test \
             --parallel \
             --maxParallel=4 \
             --base=remotes/origin/main \
@@ -55,7 +55,7 @@ jobs:
 
       - name: affected:build:ci
         run: |
-          nx affected --target=build
+          nx affected --target=build \
             --parallel \
             --maxParallel=4 \
             --base=remotes/origin/main \
@@ -63,7 +63,7 @@ jobs:
 
       - name: affected:e2e:ci
         run: |
-          nx affected --target=e2e
+          nx affected --target=e2e \
             --parallel \
             --maxParallel=4 \
             --base=remotes/origin/main \
@@ -71,7 +71,7 @@ jobs:
 
       - name: affected:deploy:next
         run: |
-          nx affected --target=deploy
+          nx affected --target=deploy \
             --parallel \
             --maxParallel=4 \
             --base=remotes/origin/main \
