@@ -8,6 +8,7 @@
     "circleci",
     "codespaces",
     "compodoc",
+    "devcontainer",
     "frontends",
     "ghpages",
     "lighthouserc",
