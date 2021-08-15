@@ -1,7 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "common": "libs/common"
+    "common": "libs/common",
+    "docs-generator": "tools/docs-generator"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
