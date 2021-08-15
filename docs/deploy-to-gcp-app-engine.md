@@ -3,9 +3,9 @@
 Deployments to GCP App Engine are still a WIP at this time.
 
 Probably will use the following:
-https://github.com/google-github-actions/deploy-appengine
+<https://github.com/google-github-actions/deploy-appengine>
 
-## App engine spec example:
+## App engine spec example
 
 Below is a **starting point** app engine yaml:
 

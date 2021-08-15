@@ -12,8 +12,8 @@ and creating an next project:
 nx generate @nrwl/nest:application <nest-app> --strict
 ```
 
-## More docs:
+## More docs
 
-https://nx.dev/latest/angular/nest/overview
+<https://nx.dev/latest/angular/nest/overview>
 
-https://nx.dev/latest/angular/tutorial/05-add-node-app
+<https://nx.dev/latest/angular/tutorial/05-add-node-app>

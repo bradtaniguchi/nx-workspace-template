@@ -14,4 +14,4 @@ nx g @nrwl/angular:application <app-name> --strict --inlineStyle=true --style=sc
 
 ## More docs:
 
-https://nx.dev/latest/angular/angular/application
+<https://nx.dev/latest/angular/angular/application>

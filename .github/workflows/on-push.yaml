@@ -40,6 +40,11 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
 
+      - name: markdown-lint
+        uses: DavidAnson/markdownlint-cli2-action@v3
+        with:
+          globs: '**/*.md'
+
       - name: affected:lint
         run: |
           nx affected --target=lint \

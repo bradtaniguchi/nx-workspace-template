@@ -16,7 +16,6 @@ git lfs track "*.psd"
 
 **note** `.svg` and `.png` files are already tracked
 
+## More docs
 
-## More docs:
-
-https://git-lfs.github.com/
+<https://git-lfs.github.com/>

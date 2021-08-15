@@ -33,6 +33,6 @@ npm install --save-dev @nrwl/storybook @compodoc/compodoc
 nx g @nrwl/angular:storybook-configuration project-name
 ```
 
-## More docs:
+## More docs
 
-https://nx.dev/latest/angular/storybook/overview
+<https://nx.dev/latest/angular/storybook/overview>

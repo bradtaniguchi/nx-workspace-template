@@ -15,7 +15,7 @@ npm install --save firebase
 ```
 
 **note** detailed post on doing this setup:
-https://itnext.io/nx-nest-firebase-the-dream-616e8ee71920
+<https://itnext.io/nx-nest-firebase-the-dream-616e8ee71920>
 
 ## Deployments thru CI/CD
 
