@@ -6,6 +6,28 @@ Below are instructions on adding Angular libraries.
 npm install --save-dev @nrwl/angular
 ```
 
+before creating the app, it usually is beneficial to change some defaults from the top-level workspace file:
+```json
+"generators": {
+  "@nrwl/angular:application": {
+    "style": "scss",
+    "linter": "eslint",
+    "unitTestRunner": "jest",
+    "e2eTestRunner": "cypress"
+  },
+  "@nrwl/angular:library": {
+    "style": "scss",
+    "linter": "eslint",
+    "unitTestRunner": "jest"
+  },
+  "@nrwl/angular:component": {
+    "style": "scss",
+    "changeDetection": "OnPush",
+    "skipTests": true
+  }
+},
+```
+
 and creating a new app with:
 
 ```bash
