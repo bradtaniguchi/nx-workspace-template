@@ -2,17 +2,39 @@
 
 ## Installing supporting packages
 
-To get client-side firebase support, run:
+Be sure to install the global firebase tools with:
 
 ```bash
-ng add @angular/fire
+npm install -g firebase-tools@latest
 ```
 
-and supporting packages:
+**note** be sure to login locally with:
 
 ```bash
-npm install --save firebase
+firebase login 
 ```
+
+or for cloud instances:
+```bash
+firebase login --no-localhost
+```
+
+Then setup firebase:
+```bash
+firebase init
+```
+
+**note** this may fail a few times due to forgetting to create the project, or firestore rules.
+**note** most options will be selected as "Y", especially for a new clean repo.
+
+
+After setting up firebase for this project, setup @angular/fire integration with:
+
+```bash
+npm install --save @angular/fire
+```
+
+**note** the `nx add` varient doesn't work.
 
 **note** detailed post on doing this setup:
 <https://itnext.io/nx-nest-firebase-the-dream-616e8ee71920>
