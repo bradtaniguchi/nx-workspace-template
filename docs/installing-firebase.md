@@ -39,6 +39,14 @@ npm install --save @angular/fire
 **note** detailed post on doing this setup:
 <https://itnext.io/nx-nest-firebase-the-dream-616e8ee71920>
 
+
+## Deployments for an individual project:
+
+Deployments could be handled by github-actions, or we can use the firebase-cli to manually execute
+it on a client/project basis within each project.
+
+TBD.... add docs on how to setup firebase deployments in the project's `project.json` file on a project basis.
+
 ## Deployments thru CI/CD
 
 Deployments to firebase have been done in the past, but I have not
