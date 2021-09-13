@@ -47,6 +47,20 @@ it on a client/project basis within each project.
 
 TBD.... add docs on how to setup firebase deployments in the project's `project.json` file on a project basis.
 
+**note** most API actions go through the following action, which provides max flexibility, rather than specific actions.
+
+```yaml
+- name: Deploy to Firebase
+  uses: w9jds/firebase-action@master
+  with:
+    args: deploy --only hosting
+  env:
+    FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+```
+
+Marketplace page:
+https://github.com/marketplace/actions/github-action-for-firebase
+
 ## Deployments thru CI/CD
 
 Deployments to firebase have been done in the past, but I have not
