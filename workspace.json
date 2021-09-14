@@ -21,6 +21,12 @@
       "strict": true,
       "standaloneConfig": true
     },
+     "@nrwl/node:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "strict": true,
+      "standaloneConfig": true
+    },
     "@nrwl/angular:app": {
       "style": "scss",
       "linter": "eslint",
