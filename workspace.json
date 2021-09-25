@@ -36,7 +36,7 @@
     },
     "@nrwl/angular:component": {
       "style": "scss",
-      "changeDetection": "onPush"
+      "changeDetection": "OnPush"
     }
   }
 }
