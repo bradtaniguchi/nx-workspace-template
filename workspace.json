@@ -34,9 +34,14 @@
       "strict": true,
       "standaloneConfig": true
     },
-    "@nrwl/angular:component": {
+     "@nrwl/angular:component": {
       "style": "scss",
-      "changeDetection": "OnPush"
+      "changeDetection": "OnPush",
+      "skipTests": true,
+      "inlineStyle": true
+    },
+    "@nrwl/angular:directive": {
+      "skipTests": true
     }
   }
 }
