@@ -3,6 +3,7 @@
   "projects": {
     "common": "libs/common",
     "gh-codespaces": "libs/gh-codespaces",
-    "ng-logger": "libs/ng-logger"
+    "ng-logger": "libs/ng-logger",
+    "docs-generator": "tools/docs-generator"
   }
 }
