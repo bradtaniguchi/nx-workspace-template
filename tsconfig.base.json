@@ -19,7 +19,8 @@
       "@nx-workspace-template/common": ["libs/common/src/index.ts"],
       "@nx-workspace-template/gh-codespaces": [
         "libs/gh-codespaces/src/index.ts"
-      ]
+      ],
+      "@nx-workspace-template/ng-logger": ["libs/ng-logger/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

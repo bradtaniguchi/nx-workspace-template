@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "common": "libs/common",
-    "gh-codespaces": "libs/gh-codespaces"
+    "gh-codespaces": "libs/gh-codespaces",
+    "ng-logger": "libs/ng-logger"
   }
 }

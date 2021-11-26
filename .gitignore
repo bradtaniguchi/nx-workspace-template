@@ -41,3 +41,6 @@ Thumbs.db
 # Firebase specific
 .firebase
 
+
+# Angular-cli caching
+.angular
