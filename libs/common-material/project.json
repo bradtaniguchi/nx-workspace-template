@@ -1,0 +1,7 @@
+{
+  "root": "libs/common-material",
+  "sourceRoot": "libs/common-material",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["type:lib"]
+}

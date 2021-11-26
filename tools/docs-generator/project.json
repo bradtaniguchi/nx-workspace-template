@@ -1,6 +1,6 @@
 {
-  "root": "tools/docs-generator/common",
-  "sourceRoot": "tools/docs-generator/common",
+  "root": "tools/docs-generator",
+  "sourceRoot": "tools/docs-generator",
   "projectType": "library",
   "targets": {
     "html": {
