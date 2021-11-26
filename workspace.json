@@ -3,6 +3,7 @@
   "projects": {
     "common": "libs/common",
     "common-material": "libs/common-material",
+    "common-ngrx": "libs/common-ngrx",
     "docs-generator": "tools/docs-generator",
     "gh-codespaces": "libs/gh-codespaces",
     "ng-logger": "libs/ng-logger"
