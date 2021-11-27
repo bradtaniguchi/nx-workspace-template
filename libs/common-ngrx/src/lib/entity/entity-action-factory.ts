@@ -1,17 +1,36 @@
-import { DocumentId, DocumentWithId } from '@nx-workspace-template/common';
-import { httpActionFactory } from '../utils/http-action-factory';
+import { createAction, props } from '@ngrx/store';
+import { EntityTypeParams } from '../models/entity-type-params';
+import { EntityActions } from './entity-actions';
 
 /**
- * Returns a list of common "http" actions
- * @params prefix - the prefix of the action, usually TITLE_CASE:
- * `ENTITY_NAME`
+ * Returns a list of common actions for an entity.
  */
-export const entityActionFactory = <
-  Doc extends DocumentWithId<DocId>,
-  DocId extends string
->(
-  prefix: string
-) => {};
+export const entityActionFactory = <TypeParams extends EntityTypeParams>(
+  prefix: TypeParams['prefix']
+): EntityActions<TypeParams> => ({
+  get: createAction(
+    `[${prefix}] Get`,
+    props<{
+      id: TypeParams['docId'];
+      reload?: boolean;
+    }>()
+  ),
+  getSuccess: createAction(
+    `[${prefix}] Get Success`,
+    props<{
+      entity: TypeParams['doc'];
+    }>()
+  ),
+  getFailed: createAction(
+    `[${prefix}] Get Failed`,
+    props<{
+      err: unknown;
+    }>()
+  ),
+  getCancel: createAction(`[${prefix}] Get Cancel`),
+
+  // TODO:
+});
 
 // ({
 //   /**
