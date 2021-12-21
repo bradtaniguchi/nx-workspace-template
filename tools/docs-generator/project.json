@@ -1,9 +1,9 @@
 {
-  "root": "tools/docs-generator/common",
-  "sourceRoot": "tools/docs-generator/common",
+  "root": "tools/docs-generator",
+  "sourceRoot": "tools/docs-generator",
   "projectType": "library",
   "targets": {
-    "docs-html": {
+    "html": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
@@ -11,6 +11,12 @@
             "command": "npx compodoc -p tools/docs-generator/tsconfig.docs.json --output=dist/docs/"
           }
         ]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx http-server dist/docs -p 4401"]
       }
     }
   },

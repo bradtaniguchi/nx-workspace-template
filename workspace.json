@@ -2,6 +2,10 @@
   "version": 2,
   "projects": {
     "common": "libs/common",
-    "gh-codespaces": "libs/gh-codespaces"
+    "common-material": "libs/common-material",
+    "common-ngrx": "libs/common-ngrx",
+    "docs-generator": "tools/docs-generator",
+    "gh-codespaces": "libs/gh-codespaces",
+    "ng-logger": "libs/ng-logger"
   }
 }

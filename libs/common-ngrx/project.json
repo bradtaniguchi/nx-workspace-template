@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/common-ngrx",
+  "sourceRoot": "libs/common-ngrx/src",
+  "prefix": "nx-workspace-template",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/common-ngrx"],
+      "options": {
+        "jestConfig": "libs/common-ngrx/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/common-ngrx/src/**/*.ts",
+          "libs/common-ngrx/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:lib"]
+}
