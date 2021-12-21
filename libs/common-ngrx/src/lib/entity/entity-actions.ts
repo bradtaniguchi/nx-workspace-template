@@ -76,4 +76,29 @@ export type EntityActions<TypeParams extends EntityTypeParams> = {
 
   updateCancel: FunctionWithParametersType<[]> &
     TypedAction<`[${TypeParams['prefix']}] Update Cancel`>;
+
+  // DELETE
+  delete: FunctionWithParametersType<
+    [
+      {
+        id: TypeParams['docId'];
+      }
+    ]
+  > &
+    TypedAction<`[${TypeParams['prefix']}] Delete`>;
+
+  deleteSuccess: FunctionWithParametersType<
+    [
+      {
+        id: TypeParams['docId'];
+      }
+    ]
+  > &
+    TypedAction<`[${TypeParams['prefix']}] Delete Success`>;
+
+  deleteFailed: FunctionWithParametersType<[{ err: unknown }]> &
+    TypedAction<`[${TypeParams['prefix']}] Delete Failed`>;
+
+  deleteCancel: FunctionWithParametersType<[]> &
+    TypedAction<`[${TypeParams['prefix']}] Delete Cancel`>;
 };

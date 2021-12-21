@@ -69,5 +69,24 @@ export const entityActionFactory = <TypeParams extends EntityTypeParams>(
   ),
   updateCancel: createAction(`[${prefix}] Update Cancel`),
 
-  // TODO:
+  delete: createAction(
+    `[${prefix}] Delete`,
+    props<{
+      id: TypeParams['docId'];
+    }>()
+  ),
+  deleteSuccess: createAction(
+    `[${prefix}] Delete Success`,
+    props<{
+      id: TypeParams['docId'];
+    }>()
+  ),
+  deleteFailed: createAction(
+    `[${prefix}] Delete Failed`,
+    props<{
+      err: unknown;
+    }>()
+  ),
+  deleteCancel: createAction(`[${prefix}] Delete Cancel`),
+  // TODO: add bulk actions
 });
