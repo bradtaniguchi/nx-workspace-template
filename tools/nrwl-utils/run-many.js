@@ -10,7 +10,7 @@ const baseSha = isMaster ? 'origin/main~1' : 'origin/main';
     `npx nx print-affected --base=${baseSha} --target=${target} --select=projects`
   ).then((res) => res.stdout.toString('utf-8'));
 
-  const array = JSON.parse(affectedProjects).sort();
+  const array = affectedProjects.split(', ').sort();
 
   const sliceSize = Math.max(Math.floor(array.length / jobCount), 1);
   const projects =
