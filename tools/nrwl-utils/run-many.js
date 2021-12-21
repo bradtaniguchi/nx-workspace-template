@@ -6,14 +6,11 @@ const isMaster = branch === 'refs/heads/main';
 const baseSha = isMaster ? 'origin/main~1' : 'origin/main';
 
 (async () => {
-  const affected = await exec(
-    `npx nx print-affected --base=${baseSha} --target=${target}`
+  const affectedProjects = await exec(
+    `npx nx print-affected --base=${baseSha} --target=${target} --select=projects`
   ).then((res) => res.stdout.toString('utf-8'));
 
-  const array = JSON.parse(affected)
-    .tasks.map((t) => t.target.project)
-    .slice()
-    .sort();
+  const array = JSON.parse(affectedProjects).sort();
 
   const sliceSize = Math.max(Math.floor(array.length / jobCount), 1);
   const projects =
