@@ -1,6 +1,3 @@
-import { ActionCreatorProps, NotAllowedCheck } from '@ngrx/store';
-import { NotAllowedInPropsCheck } from '@ngrx/store/src/models';
-
 /**
  * "Wrapper type", used to define
  * the types for the `htt-action-factory`.
