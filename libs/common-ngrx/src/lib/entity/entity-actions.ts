@@ -27,6 +27,7 @@ export type EntityActions<TypeParams extends EntityTypeParams> = {
   getCancel: FunctionWithParametersType<[]> &
     TypedAction<`[${TypeParams['prefix']}] Get Cancel`>;
 
+  // CREATE
   create: FunctionWithParametersType<
     [
       {
@@ -50,4 +51,29 @@ export type EntityActions<TypeParams extends EntityTypeParams> = {
 
   createCancel: FunctionWithParametersType<[]> &
     TypedAction<`[${TypeParams['prefix']}] Create Cancel`>;
+
+  // UPDATE
+  update: FunctionWithParametersType<
+    [
+      {
+        entity: TypeParams['doc'];
+      }
+    ]
+  > &
+    TypedAction<`[${TypeParams['prefix']}] Update`>;
+
+  updateSuccess: FunctionWithParametersType<
+    [
+      {
+        entity: TypeParams['doc'];
+      }
+    ]
+  > &
+    TypedAction<`[${TypeParams['prefix']}] Update Success`>;
+
+  updateFailed: FunctionWithParametersType<[{ err: unknown }]> &
+    TypedAction<`[${TypeParams['prefix']}] Update Failed`>;
+
+  updateCancel: FunctionWithParametersType<[]> &
+    TypedAction<`[${TypeParams['prefix']}] Update Cancel`>;
 };
