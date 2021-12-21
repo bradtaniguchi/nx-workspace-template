@@ -29,6 +29,26 @@ export const entityActionFactory = <TypeParams extends EntityTypeParams>(
   ),
   getCancel: createAction(`[${prefix}] Get Cancel`),
 
+  create: createAction(
+    `[${prefix}] Create`,
+    props<{
+      entity: Partial<TypeParams['doc']>;
+    }>()
+  ),
+  createSuccess: createAction(
+    `[${prefix}] Create Success`,
+    props<{
+      entity: TypeParams['doc'];
+    }>()
+  ),
+  createFailed: createAction(
+    `[${prefix}] Create Failed`,
+    props<{
+      err: unknown;
+    }>()
+  ),
+  createCancel: createAction(`[${prefix}] Create Cancel`),
+
   // TODO:
 });
 
