@@ -22,16 +22,24 @@ jobs:
           # fetch all commits, slower but required to pass to nx
           fetch-depth: 0
 
-      - name: setup node 14
+      - name: setup node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.17.4'
+          node-version: '16.10.0'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
 
-      - name: Install Global nx
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+
+      - name: install global nx
         run: npm install -g @nrwl/cli
 
       - name: nx:report
@@ -40,46 +48,8 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
 
-      - name: affected:lint
-        run: |
-          nx affected --target=lint \
-            --parallel \
-            --maxParallel=4 \
-            --base=remotes/origin/main \
-            --head=${GITHUB_SHA}
-
-      - name: affected:test
-        run: |
-          nx affected --target=test \
-            --parallel \
-            --maxParallel=4 \
-            --base=remotes/origin/main \
-            --head=${GITHUB_SHA}
-
-      - name: affected:build:ci
-        run: |
-          nx affected --target=build \
-            --parallel \
-            --maxParallel=4 \
-            --base=remotes/origin/main \
-            --head=${GITHUB_SHA}
-
-      - name: affected:e2e:ci
-        run: |
-          nx affected --target=e2e \
-            --parallel \
-            --maxParallel=4 \
-            --base=remotes/origin/main \
-            --head=${GITHUB_SHA}
-
-      - name: affected:deploy:next
-        run: |
-          nx affected --target=deploy \
-            --parallel \
-            --maxParallel=4 \
-            --base=remotes/origin/main \
-            --head=${GITHUB_SHA}
-
+      - name: run-many
+        run: node ./tools/nrwl-utils/run-many.js ${{ matrix.target }} ${{ matrix.jobIndex }} ${{ env.jobCount }} $GITHUB_REF
 # TODO: add environment support for `test` `stage` and `prod`
 # TODO: see docs for adding specific deployment pipelines
 
