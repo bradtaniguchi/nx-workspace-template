@@ -6,6 +6,7 @@
     "common-ngrx": "libs/common-ngrx",
     "docs-generator": "tools/docs-generator",
     "gh-codespaces": "libs/gh-codespaces",
-    "ng-logger": "libs/ng-logger"
+    "ng-logger": "libs/ng-logger",
+    "script-loader": "libs/script-loader"
   }
 }
