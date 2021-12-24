@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/script-loader",
+  "sourceRoot": "libs/script-loader/src",
+  "prefix": "nx-workspace-template",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/script-loader"],
+      "options": {
+        "jestConfig": "libs/script-loader/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/script-loader/src/**/*.ts",
+          "libs/script-loader/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:lib"]
+}
