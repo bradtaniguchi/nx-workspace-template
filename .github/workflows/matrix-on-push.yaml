@@ -48,6 +48,8 @@ jobs:
           TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
           echo "::set-output name=TASKS::$TASKS"
 
+  # Prints the matrix output, useful for debugging
+  # See the bottom of this file for an example printout.
   print-matrix:
     name: print matrix
     timeout-minutes: 5
@@ -59,7 +61,10 @@ jobs:
 
   core-pipeline:
     name: core pipeline
+    timeout-minutes: 10
     runs-on: ubuntu-latest
+
+    # TODO: see if this can be dynamic?
     needs:
       - gen-matrix
       - print-matrix
@@ -88,7 +93,40 @@ jobs:
       - name: install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
-      - name: print task
+
+      # Example task:
+      # { id: "common:lint", project: "common", target: "lint", dependencies: [] },
+      - name: print task-id
         run: |
-          echo "${{ matrix.TASK }}"
+          echo "${{ matrix.TASK.id }}"
       # TODO: execute task
+
+# Example print-matrix output
+# [
+#   { id: "common:lint", project: "common", target: "lint", dependencies: [] },
+#   {
+#     id: "common-ngrx:lint",
+#     project: "common-ngrx",
+#     target: "lint",
+#     dependencies: [],
+#   },
+#   {
+#     id: "ng-logger:lint",
+#     project: "ng-logger",
+#     target: "lint",
+#     dependencies: ["common:lint"],
+#   },
+#   { id: "common:test", project: "common", target: "test", dependencies: [] },
+#   {
+#     id: "common-ngrx:test",
+#     project: "common-ngrx",
+#     target: "test",
+#     dependencies: [],
+#   },
+#   {
+#     id: "ng-logger:test",
+#     project: "ng-logger",
+#     target: "test",
+#     dependencies: ["common:test"],
+#   },
+# ];
