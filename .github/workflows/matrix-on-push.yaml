@@ -12,8 +12,8 @@ jobs:
     # do not run this job if skip ci is in commit message
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
-    outputs:
-      tasks: ${{ steps.set-matrix.outputs.tasks }}
+    # outputs:
+    #   tasks: ${{ steps.set-matrix.outputs.tasks }}
 
     steps:
       - name: checkout repo
@@ -53,18 +53,18 @@ jobs:
       - name: smoke
         run: node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF
 
-      - name: generate matrix
-        run: TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
+      # - name: generate matrix
+      #   run: TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
 
-      - name: set outputs
-        id: set-matrix
-        run: echo ::set-output name=tasks::${TASKS}
+      # - name: set outputs
+      #   id: set-matrix
+      #   run: echo ::set-output name=tasks::${TASKS}
 
-  print-matrix:
-    runs-on: ubuntu-latest
-    needs: [gen-matrix]
-    steps:
-      - name: print matrix
-        run: echo "${{ toJSON(steps.gen-matrix.outputs.tasks) }}"
+  # print-matrix:
+  #   runs-on: ubuntu-latest
+  #   needs: [gen-matrix]
+  #   steps:
+  #     - name: print matrix
+  #       run: echo "${{ toJSON(steps.gen-matrix.outputs.tasks) }}"
 
   # TODO: Add job matrix generations
