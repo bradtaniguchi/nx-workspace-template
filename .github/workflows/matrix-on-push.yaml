@@ -99,8 +99,9 @@ jobs:
       - name: print task-id
         run: |
           echo "${{ matrix.TASK.id }}"
-      # TODO: execute task
 
+      - name: execute task
+        run: npx nx run ${{ matrix.TASK.id }}
 # Example print-matrix output
 # [
 #   { id: "common:lint", project: "common", target: "lint", dependencies: [] },
