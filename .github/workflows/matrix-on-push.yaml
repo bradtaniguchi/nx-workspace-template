@@ -41,6 +41,15 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
+      - name: install global nx
+        run: npm install -g @nrwl/cli
+
+      - name: nx:report
+        run: nx report
+
+      - name: nx:workspace-lint
+        run: nx workspace-lint
+
       - name: smoke
         run: node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF
 
