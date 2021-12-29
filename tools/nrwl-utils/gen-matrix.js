@@ -53,7 +53,7 @@ const toTaskIdFromProjectId = (projectId, task) => [projectId, task].join(':');
  * @returns {Promise<object>} returns the output of the `nx print-affected` command.
  */
 const printAffected = () =>
-  exec(`npx nx print-affected`).then((res) =>
+  exec(`npx nx print-affected --base=${baseSha}`).then((res) =>
     JSON.parse(res.stdout.toString('utf-8'))
   );
 
@@ -74,29 +74,17 @@ const getImplicitDependencies = (affected, project, target) => {
 
 (async () => {
   try {
-    // const tasksForTarget = await Promise.all(
-    //   TARGETS.map((target) =>
-    //     getTaskIds(target).then((tasks) =>
-    //       tasks.map((taskId) => ({
-    //         id: taskId,
-    //         project: getProjectIdFromTaskId(taskId),
-    //         target,
-    //       }))
-    //     )
-    //   )
-    // );
-    const tasksForTarget = [];
-
-    for (let target of TARGETS) {
-      const tasks = await getTaskIds(target).then((tasks) =>
-        tasks.map((taskId) => ({
-          id: taskId,
-          project: getProjectIdFromTaskId(taskId),
-          target,
-        }))
-      );
-      tasksForTarget.push(tasks);
-    }
+    const tasksForTarget = await Promise.all(
+      TARGETS.map((target) =>
+        getTaskIds(target).then((tasks) =>
+          tasks.map((taskId) => ({
+            id: taskId,
+            project: getProjectIdFromTaskId(taskId),
+            target,
+          }))
+        )
+      )
+    );
 
     const affected = await printAffected();
 
