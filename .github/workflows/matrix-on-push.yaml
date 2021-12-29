@@ -46,7 +46,8 @@ jobs:
         id: gen-matrix
         run: |
           echo "TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)"
-          echo ::set-output name=tasks::${TASKS}
+          echo $TASKS
+          echo ::set-output name=tasks::$TASKS
 
   print-matrix:
     runs-on: ubuntu-latest
