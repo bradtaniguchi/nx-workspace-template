@@ -22,8 +22,7 @@ jobs:
           # get lfs items
           lfs: true
           # fetch all commits, slower but required to pass to nx
-          # 0 doesn't work for some damn reason!
-          fetch-depth: 9001
+          fetch-depth: 0
 
       - name: setup node
         uses: actions/setup-node@v2
