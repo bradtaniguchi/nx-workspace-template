@@ -50,12 +50,11 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
 
-      - name: generate matrix
-        run: TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
-
       - name: set outputs
         id: set-matrix
-        run: echo ::set-output name=tasks::${TASKS}
+        run: |
+          TASKS='${{ toJSON(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF) }}'
+          echo ::set-output name=tasks::${TASKS}
 
   print-matrix:
     runs-on: ubuntu-latest
