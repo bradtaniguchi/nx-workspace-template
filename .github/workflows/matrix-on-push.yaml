@@ -1,0 +1,32 @@
+name: matrix-on-push
+on:
+  # run on push
+  push:
+    branches:
+      - '**'
+
+jobs:
+  gen-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      tasks: ${{steps.gen-matrix.outputs.tasks}}
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - name: generate matrix
+        id: gen-matrix
+        run: echo "::set-output name=tasks=${{toJSON(node ./tools/nrwl-utils/run-many.js)}}"
+
+  print-matrix:
+    runs-on: ubuntu-latest
+    needs: [gen-matrix]
+    steps:
+      - name: print matrix
+        run: echo "${{ toJSON(needs.gen-matrix.outputs.tasks) }}"
+
+  # TODO: Add job matrix generations
