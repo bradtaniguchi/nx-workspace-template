@@ -56,6 +56,6 @@ jobs:
     needs: [gen-matrix]
     steps:
       - name: print matrix
-        run: echo "${{ steps.gen-matrix.outputs.TASKS }}"
+        run: echo "${{ needs.gen-matrix.outputs.TASKS }}"
 
   # TODO: Add job matrix generations
