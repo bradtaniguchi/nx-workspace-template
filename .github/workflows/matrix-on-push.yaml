@@ -27,12 +27,21 @@ jobs:
         with:
           node-version: '16.10.0'
           cache: 'npm'
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
       - name: install global nx
         run: npm install -g @nrwl/cli
       - name: nx:report
-        run: npx nx report
+        run: nx report
       - name: nx:workspace-lint
-        run: npx nx workspace-lint
+        run: nx workspace-lint
       - name: gen matrix
         id: gen-matrix
         run: |
