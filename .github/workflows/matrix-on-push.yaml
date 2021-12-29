@@ -36,6 +36,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
+      - name: install global nx
+        run: npm install -g @nrwl/cli
+
       - name: generate matrix
         id: gen-matrix
         run: |
