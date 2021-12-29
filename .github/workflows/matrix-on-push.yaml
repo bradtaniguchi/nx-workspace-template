@@ -30,9 +30,9 @@ jobs:
       - name: install global nx
         run: npm install -g @nrwl/cli
       - name: nx:report
-        run: nx report
+        run: npx nx report
       - name: nx:workspace-lint
-        run: nx workspace-lint
+        run: npx nx workspace-lint
       - name: gen matrix
         id: gen-matrix
         run: |
