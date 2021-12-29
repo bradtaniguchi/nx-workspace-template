@@ -44,12 +44,6 @@ jobs:
       - name: install global nx
         run: npm install -g @nrwl/cli
 
-      - name: nx:report
-        run: nx report
-
-      - name: nx:workspace-lint
-        run: nx workspace-lint
-
       - name: set outputs
         id: get-matrix
         run: |
@@ -60,6 +54,6 @@ jobs:
     needs: [gen-matrix]
     steps:
       - name: print matrix
-        run: echo "${{ toJSON(steps.gen-matrix.outputs.TASKS) }}"
+        run: echo "${{ fromJson(steps.gen-matrix.outputs.TASKS) }}"
 
   # TODO: Add job matrix generations
