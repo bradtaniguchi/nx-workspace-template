@@ -2,7 +2,6 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const [branch] = process.argv.slice(2);
-if (!branch) throw new Error('No branch given');
 const isMaster = branch === 'refs/heads/main';
 const BASE_SHA = isMaster ? 'origin/main~1' : 'origin/main';
 
@@ -74,30 +73,36 @@ const getImplicitDependencies = (affected, project, target) => {
 };
 
 (async () => {
-  const tasksForTarget = await Promise.all(
-    TARGETS.map((target) =>
-      getTaskIds(target).then((tasks) =>
-        tasks.map((taskId) => ({
-          id: taskId,
-          project: getProjectIdFromTaskId(taskId),
-          target,
-        }))
+  try {
+    const tasksForTarget = await Promise.all(
+      TARGETS.map((target) =>
+        getTaskIds(target).then((tasks) =>
+          tasks.map((taskId) => ({
+            id: taskId,
+            project: getProjectIdFromTaskId(taskId),
+            target,
+          }))
+        )
       )
-    )
-  );
+    );
 
-  const affected = await printAffected();
+    const affected = await printAffected();
 
-  for (let tasks of tasksForTarget) {
-    for (let task of tasks) {
-      task.dependencies = getImplicitDependencies(
-        affected,
-        getProjectIdFromTaskId(task.id),
-        task.target
-      );
+    for (let tasks of tasksForTarget) {
+      for (let task of tasks) {
+        task.dependencies = getImplicitDependencies(
+          affected,
+          getProjectIdFromTaskId(task.id),
+          task.target
+        );
+      }
     }
-  }
 
-  const flattenedTargets = tasksForTarget.flat();
-  console.log(JSON.stringify(flattenedTargets));
+    const flattenedTargets = tasksForTarget.flat();
+    console.log(JSON.stringify(flattenedTargets));
+    process.exit(0);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 })();
