@@ -74,17 +74,29 @@ const getImplicitDependencies = (affected, project, target) => {
 
 (async () => {
   try {
-    const tasksForTarget = await Promise.all(
-      TARGETS.map((target) =>
-        getTaskIds(target).then((tasks) =>
-          tasks.map((taskId) => ({
-            id: taskId,
-            project: getProjectIdFromTaskId(taskId),
-            target,
-          }))
-        )
-      )
-    );
+    // const tasksForTarget = await Promise.all(
+    //   TARGETS.map((target) =>
+    //     getTaskIds(target).then((tasks) =>
+    //       tasks.map((taskId) => ({
+    //         id: taskId,
+    //         project: getProjectIdFromTaskId(taskId),
+    //         target,
+    //       }))
+    //     )
+    //   )
+    // );
+    const tasksForTarget = [];
+
+    for (let target of TARGETS) {
+      const tasks = await getTaskIds(target).then((tasks) =>
+        tasks.map((taskId) => ({
+          id: taskId,
+          project: getProjectIdFromTaskId(taskId),
+          target,
+        }))
+      );
+      tasksForTarget.push(tasks);
+    }
 
     const affected = await printAffected();
 
