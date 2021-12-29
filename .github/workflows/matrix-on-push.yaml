@@ -44,15 +44,16 @@ jobs:
 
       - name: generate matrix
         id: gen-matrix
+        # echo "TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)"
         run: |
-          echo "TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)"
-          echo ::set-output name=tasks::$TASKS
+          TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
+          echo ::set-output name=tasks::${TASKS}
 
   print-matrix:
     runs-on: ubuntu-latest
     needs: [gen-matrix]
     steps:
       - name: print matrix
-        run: echo ${{ toJSON(steps.gen-matrix.outputs.tasks) }}
+        run: echo "${{ toJSON(steps.gen-matrix.outputs.tasks) }}"
 
   # TODO: Add job matrix generations
