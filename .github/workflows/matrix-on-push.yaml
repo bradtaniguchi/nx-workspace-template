@@ -20,7 +20,7 @@ jobs:
 
       - name: generate matrix
         id: gen-matrix
-        run: echo "::set-output name=tasks=${{toJSON(node ./tools/nrwl-utils/run-many.js)}}"
+        run: echo ::set-output name=tasks::node ./tools/nrwl-utils/gen-matrix.js
 
   print-matrix:
     runs-on: ubuntu-latest
