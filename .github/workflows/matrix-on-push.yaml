@@ -91,5 +91,4 @@ jobs:
       - name: print task
         run: |
           echo "${{ matrix.TASK }}"
-          echo "${{ fromJSON(matrix.TASK) }}"
       # TODO: execute task
