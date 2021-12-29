@@ -3,7 +3,7 @@ const exec = util.promisify(require('child_process').exec);
 
 const [branch] = process.argv.slice(2);
 const isMaster = branch === 'refs/heads/main';
-const BASE_SHA = isMaster ? 'origin/main~1' : 'origin/main';
+const baseSha = isMaster ? 'origin/main~1' : 'origin/main';
 
 /**
  * This is the set of default tasks always ran. If the project requires more,
@@ -19,7 +19,7 @@ const TARGETS = ['lint', 'test', 'build'];
  */
 const getTaskIds = (target) =>
   exec(
-    `npx nx print-affected --base=${BASE_SHA} --target=${target} --select=tasks.id`
+    `npx nx print-affected --base=${baseSha} --target=${target} --select=tasks.id`
   ).then((ids) =>
     ids.stdout.toString('utf-8').replace('\n', '').split(', ').filter(Boolean)
   );

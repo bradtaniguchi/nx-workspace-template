@@ -19,7 +19,9 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
         with:
+          # get lfs items
           lfs: true
+          # fetch all commits, slower but required to pass to nx
           fetch-depth: 0
 
       - name: setup node
