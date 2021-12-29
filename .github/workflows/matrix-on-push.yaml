@@ -13,7 +13,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     outputs:
-      tasks: ${{ steps.get-matrix.outputs.TASKS }}
+      TASKS: ${{ steps.gen-matrix.outputs.TASKS }}
 
     steps:
       - name: checkout repo
@@ -44,8 +44,8 @@ jobs:
       - name: install global nx
         run: npm install -g @nrwl/cli
 
-      - name: set outputs
-        id: get-matrix
+      - name: gen matrix
+        id: gen-matrix
         run: |
           TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
           echo $TASKS
