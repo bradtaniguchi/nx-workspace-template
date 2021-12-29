@@ -50,6 +50,9 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
 
+      - name: SANITY
+        run: node ./tools/nrwl-utils/run-many.js lint 1 1 $GITHUB_REF
+
       - name: smoke
         run: node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF
 
