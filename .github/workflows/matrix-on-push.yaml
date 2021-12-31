@@ -63,8 +63,6 @@ jobs:
     name: core pipeline
     timeout-minutes: 10
     runs-on: ubuntu-latest
-
-    # TODO: see if this can be dynamic?
     needs:
       - gen-matrix
       - print-matrix
