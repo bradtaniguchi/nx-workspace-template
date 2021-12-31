@@ -38,15 +38,56 @@ jobs:
         run: npm ci --ignore-scripts
       - name: install global nx
         run: npm install -g @nrwl/cli
-      - name: nx:report
-        run: nx report
-      - name: nx:workspace-lint
-        run: nx workspace-lint
       - name: gen matrix
         id: gen-matrix
         run: |
           TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
           echo "::set-output name=TASKS::$TASKS"
+  # Prints the dependencies of the project into a public graph. To be used later in
+  # other workflows for "debug" via the `dep-graph` artifact.
+  # **note** this could be done less often.
+  dep-graph:
+    name: dep-graph
+    timeout-minutes: 10
+    # do not run this job if skip ci is in commit message
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          # get lfs items
+          lfs: true
+          # fetch all commits, slower but required to pass to nx
+          fetch-depth: 0
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
+          cache: 'npm'
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+      - name: install global nx
+        run: npm install -g @nrwl/cli
+      - name: nx:report
+        run: nx report
+      - name: nx:workspace-lint
+        run: nx workspace-lint
+      - name: dep-graph
+        run: nx run dep-graph:html
+      - name: upload dep-graph
+        uses: actions/upload-artifact@v2
+        with:
+          name: dep-graph
+          path: dist/dep-graph
+          retention-days: 5
 
   # Prints the matrix output, useful for debugging
   # See the bottom of this file for an example printout.
@@ -58,7 +99,7 @@ jobs:
     steps:
       - name: print matrix
         run: echo "${{ needs.gen-matrix.outputs.TASKS }}"
-
+  # Ran for each of the tasks within the matrix, all in parallel.
   core-pipeline:
     name: core pipeline
     timeout-minutes: 10

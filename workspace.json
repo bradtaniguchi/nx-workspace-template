@@ -5,6 +5,7 @@
     "common-material": "libs/common-material",
     "common-ngrx": "libs/common-ngrx",
     "docs-generator": "tools/docs-generator",
+    "dep-graph": "tools/dep-graph",
     "gh-codespaces": "libs/gh-codespaces",
     "ng-logger": "libs/ng-logger",
     "script-loader": "libs/script-loader"
