@@ -6,9 +6,11 @@ on:
       - '**'
 
 jobs:
+  # generates the execution matrix, so github-actions knows what to spin-up
+  # within the `core-pipeline`
   gen-matrix:
     name: gen matrix
-    timeout-minutes: 10
+    timeout-minutes: 5
     # do not run this job if skip ci is in commit message
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
@@ -19,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           # get lfs items
-          lfs: true
+          lfs: false
           # fetch all commits, slower but required to pass to nx
           fetch-depth: 0
       - name: setup node
@@ -43,13 +45,61 @@ jobs:
         run: |
           TASKS=$(node ./tools/nrwl-utils/gen-matrix.js $GITHUB_REF)
           echo "::set-output name=TASKS::$TASKS"
+
   # Prints the dependencies of the project into a public graph. To be used later in
-  # other workflows for "debug" via the `dep-graph` artifact.
-  # **note** this could be done less often.
-  dep-graph:
-    name: dep-graph
-    timeout-minutes: 10
+  # with other jobs. Generates a static artifact
+  # **note** change to only occur on `main`
+  # & github.head_ref == 'main'
+  gen-dep-graph:
+    name: gen dep-graph
+    timeout-minutes: 5
     # do not run this job if skip ci is in commit message
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          # get lfs items
+          lfs: false
+          # fetch all commits, slower but required to pass to nx
+          fetch-depth: 0
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
+          cache: 'npm'
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+      - name: install global nx
+        run: npm install -g @nrwl/cli
+      - name: nx:report
+        run: nx report
+      - name: nx:workspace-lint
+        run: nx workspace-lint
+      - name: gen dep-graph
+        run: nx run dep-graph:html
+      - name: upload dep-graph
+        uses: actions/upload-artifact@v2
+        with:
+          name: dep-graph
+          path: dist/dep-graph
+          retention-days: 3
+
+  # Runs compodoc and uploads the generated documentation to the artifacts. To be used later
+  # to build out an "internal" app.
+  # **note** change to only occur on `main`
+  # & github.head_ref == 'main'
+  gen-docs:
+    name: gen docs
+    timeout-minutes: 5
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     steps:
@@ -76,18 +126,15 @@ jobs:
         run: npm ci --ignore-scripts
       - name: install global nx
         run: npm install -g @nrwl/cli
-      - name: nx:report
-        run: nx report
-      - name: nx:workspace-lint
-        run: nx workspace-lint
-      - name: dep-graph
-        run: nx run dep-graph:html
+      - name: gen-docs
+        run: nx run docs-generator:html
       - name: upload dep-graph
         uses: actions/upload-artifact@v2
         with:
-          name: dep-graph
-          path: dist/dep-graph
-          retention-days: 5
+          name: docs
+          path: dist/docs
+          retention-days: 3
+  # TODO: Add storybook, "internal app" and github deployment
 
   # Prints the matrix output, useful for debugging
   # See the bottom of this file for an example printout.
@@ -99,6 +146,7 @@ jobs:
     steps:
       - name: print matrix
         run: echo "${{ needs.gen-matrix.outputs.TASKS }}"
+
   # Ran for each of the tasks within the matrix, all in parallel.
   core-pipeline:
     name: core pipeline
