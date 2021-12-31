@@ -152,6 +152,7 @@ jobs:
     name: core pipeline
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    if: ${{ needs.gen-matrix.outputs.TASKS != '[]' }}
     needs:
       - gen-matrix
       - print-matrix
