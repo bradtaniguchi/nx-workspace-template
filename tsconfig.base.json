@@ -22,7 +22,6 @@
       "@nx-workspace-template/gh-codespaces": [
         "libs/gh-codespaces/src/index.ts"
       ],
-      "@nx-workspace-template/ng-logger": ["libs/ng-logger/src/index.ts"],
       "@nx-workspace-template/script-loader": [
         "libs/script-loader/src/index.ts"
       ]

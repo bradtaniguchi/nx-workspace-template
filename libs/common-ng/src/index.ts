@@ -1,2 +1,2 @@
-export * from './lib/can-deactivate/deactivatable-component';
-export * from './lib/can-deactivate/can-deactivate.guard';
+export * from './lib/can-deactivate';
+export * from './lib/logger';
