@@ -1,14 +1,14 @@
 {
   "projectType": "library",
-  "root": "libs/ng-logger",
-  "sourceRoot": "libs/ng-logger/src",
+  "root": "libs/common-ng",
+  "sourceRoot": "libs/common-ng/src",
   "prefix": "nx-workspace-template",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/ng-logger"],
+      "outputs": ["coverage/libs/common-ng"],
       "options": {
-        "jestConfig": "libs/ng-logger/jest.config.js",
+        "jestConfig": "libs/common-ng/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -16,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/ng-logger/src/**/*.ts",
-          "libs/ng-logger/src/**/*.html"
+          "libs/common-ng/src/**/*.ts",
+          "libs/common-ng/src/**/*.html"
         ]
       }
     }

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'ng-logger',
+  displayName: 'common-ng',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/ng-logger',
+  coverageDirectory: '../../coverage/libs/common-ng',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
