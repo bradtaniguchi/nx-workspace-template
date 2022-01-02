@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "build-config": "tools/build-config",
     "common": "libs/common",
     "common-material": "libs/common-material",
     "common-ng": "libs/common-ng",
