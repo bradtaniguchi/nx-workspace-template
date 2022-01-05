@@ -33,5 +33,10 @@
     "Taniguchi's",
     "treosh",
     "zhuangtongfa"
-  ]
+  ],
+  // force logging to be enabled
+  "angular.log": "verbose",
+  // allow eslint to use more memory to improve performance for
+  // larger projects.
+  "eslint.execArgv": ["--max-old-space-size=4096"]
 }
