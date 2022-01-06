@@ -35,23 +35,19 @@
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "strict": true,
+      "tags": "type:app"
     },
     "@nrwl/angular:library": {
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
       "strict": true,
-      "standaloneConfig": true
+      "standaloneConfig": true,
+      "tags": "type:lib"
     },
     "@nrwl/node:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "strict": true,
-      "standaloneConfig": true
-    },
-    "@nrwl/angular:app": {
-      "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
       "strict": true,
