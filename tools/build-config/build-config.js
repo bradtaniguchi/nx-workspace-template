@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 const { constants } = require('fs');
-const { access, readFile, writeFile } = require('fs/promises');
-const { join } = require('path');
+const { access, readFile, writeFile, mkdir } = require('fs/promises');
+const { join, dirname } = require('path');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 
@@ -21,6 +21,8 @@ const getFileExists = (path) =>
   access(path, constants.F_OK)
     .then(() => true)
     .catch(() => false);
+
+const createNestedFolderPath = (path) => mkdir(path, { recursive: true });
 
 const getAngularVersion = () =>
   readFile(join(__dirname, '../../package.json'), 'utf8').then(
@@ -51,6 +53,10 @@ const getJson = ({ revision, angularVersion }) => `{
     if (fileExists) {
       console.log('config.json file already exists, done');
       process.exit(0);
+    } else {
+      console.log('creating folder path if it does not exist');
+      await createNestedFolderPath(dirname(path));
+      console.log('created folder path', dirname(path));
     }
     console.log('got hash', revision);
 
