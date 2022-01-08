@@ -57,6 +57,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
+                                <a href="modules/BuildConfigModule.html" data-type="entity-link" >BuildConfigModule</a>
+                            </li>
+                            <li class="link">
                                 <a href="modules/CommonNgrxModule.html" data-type="entity-link" >CommonNgrxModule</a>
                             </li>
                             <li class="link">
@@ -108,6 +111,54 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                         </ul>
                     </li>
+                        <li class="chapter">
+                            <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
+                                'data-target="#xs-injectables-links"' }>
+                                <span class="icon ion-md-arrow-round-down"></span>
+                                <span>Injectables</span>
+                                <span class="icon ion-ios-arrow-down"></span>
+                            </div>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                                <li class="link">
+                                    <a href="injectables/BuildConfigService.html" data-type="entity-link" >BuildConfigService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/GlobalErrorHandler.html" data-type="entity-link" >GlobalErrorHandler</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/HttpLoadingStateService.html" data-type="entity-link" >HttpLoadingStateService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/RouteLoadingStateService.html" data-type="entity-link" >RouteLoadingStateService</a>
+                                </li>
+                            </ul>
+                        </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interceptors-links"' :
+                            'data-target="#xs-interceptors-links"' }>
+                            <span class="icon ion-ios-swap"></span>
+                            <span>Interceptors</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="interceptors-links"' : 'id="xs-interceptors-links"' }>
+                            <li class="link">
+                                <a href="interceptors/HttpLoadingInterceptor.html" data-type="entity-link" >HttpLoadingInterceptor</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#guards-links"' :
+                            'data-target="#xs-guards-links"' }>
+                            <span class="icon ion-ios-lock"></span>
+                            <span>Guards</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"' }>
+                            <li class="link">
+                                <a href="guards/CanDeactivateGuard.html" data-type="entity-link" >CanDeactivateGuard</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
                             'data-target="#xs-interfaces-links"' }>
@@ -117,10 +168,22 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+                                <a href="interfaces/BuildConfig.html" data-type="entity-link" >BuildConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/BuildConfigWithoutPathConfig.html" data-type="entity-link" >BuildConfigWithoutPathConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/BuildConfigWithPathConfig.html" data-type="entity-link" >BuildConfigWithPathConfig</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/CommonLoggerConfig.html" data-type="entity-link" >CommonLoggerConfig</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/DateDocument.html" data-type="entity-link" >DateDocument</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/DeactivatableComponent.html" data-type="entity-link" >DeactivatableComponent</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/DocumentWithId.html" data-type="entity-link" >DocumentWithId</a>
@@ -130,6 +193,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/HttpActionTypeParams.html" data-type="entity-link" >HttpActionTypeParams</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/HttpLoadingState.html" data-type="entity-link" >HttpLoadingState</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/RouteLoadingState.html" data-type="entity-link" >RouteLoadingState</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ScriptLoaderInitScripts.html" data-type="entity-link" >ScriptLoaderInitScripts</a>
@@ -147,6 +216,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
