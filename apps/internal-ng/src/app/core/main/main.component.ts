@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BuildConfigService } from '@nx-workspace-template/common-ng';
 
 @Component({
   selector: 'nx-workspace-template-main',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainComponent {}
+export class MainComponent {
+  constructor(public configService: BuildConfigService) {}
+}

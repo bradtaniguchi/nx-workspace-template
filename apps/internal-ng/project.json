@@ -61,7 +61,8 @@
           "browserTarget": "internal-ng:build:production"
         },
         "development": {
-          "browserTarget": "internal-ng:build:development"
+          "browserTarget": "internal-ng:build:development",
+          "hmr": true
         }
       },
       "defaultConfiguration": "development"
@@ -90,5 +91,6 @@
       }
     }
   },
-  "tags": ["type:app"]
+  "tags": ["type:app"],
+  "implicitDependencies": ["common-material", "common-ng"]
 }

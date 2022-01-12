@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { of, shareReplay } from 'rxjs';
+import { BuildConfig } from './build-config';
 import {
   BuildConfigConfig,
+  BUILD_CONFIG_CONFIG,
   isBuildConfigWithoutPathConfig,
   isBuildConfigWithPathConfig,
-} from '.';
-import { BuildConfig } from './build-config';
-import { BUILD_CONFIG_CONFIG } from './build-config-config';
+} from './build-config-config';
 
 /**
  * Provides an interface to gather the build config
