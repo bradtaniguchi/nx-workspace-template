@@ -1,0 +1,35 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row"
+                     fxLayoutAlign="space-between center">
+
+      <div fxLayout="row"
+           fxLayoutAlign="start center"
+           fxLayoutGap="8px">
+        <button mat-icon-button
+                type="button"
+                aria-label="Toggle Side Nav">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/"
+           class="norm"
+           fxHide.xs>
+          nx-workspace-template
+        </a>
+      </div>
+
+      <div>
+        <mat-chip-list *ngIf="configService.buildConfig$ | ngrxPush as config">
+          <mat-chip [title]="config | json"
+                    color="accent"
+                    selected>
+            {{config.revision}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+
+<router-outlet></router-outlet>

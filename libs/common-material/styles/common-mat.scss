@@ -1,1 +1,12 @@
 // add overrides as needed
+
+// class to be used for "grid containers", provides the same
+// spacing between elements
+.grid-container {
+  margin: 16px;
+}
+
+a.norm {
+  text-decoration: inherit;
+  color: inherit;
+}
