@@ -57,10 +57,61 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
+                                <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AppModule-44965247fd18301ec3d0ea2a9f0598fd"' : 'data-target="#xs-components-links-module-AppModule-44965247fd18301ec3d0ea2a9f0598fd"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-44965247fd18301ec3d0ea2a9f0598fd"' :
+                                            'id="xs-components-links-module-AppModule-44965247fd18301ec3d0ea2a9f0598fd"' }>
+                                            <li class="link">
+                                                <a href="components/AppComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/BuildConfigModule.html" data-type="entity-link" >BuildConfigModule</a>
                             </li>
                             <li class="link">
                                 <a href="modules/CommonNgrxModule.html" data-type="entity-link" >CommonNgrxModule</a>
+                            </li>
+                            <li class="link">
+                                <a href="modules/DashboardModule.html" data-type="entity-link" >DashboardModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-DashboardModule-f4c23784f500b5615547ceefb664a589"' : 'data-target="#xs-components-links-module-DashboardModule-f4c23784f500b5615547ceefb664a589"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DashboardModule-f4c23784f500b5615547ceefb664a589"' :
+                                            'id="xs-components-links-module-DashboardModule-f4c23784f500b5615547ceefb664a589"' }>
+                                            <li class="link">
+                                                <a href="components/DashboardComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DashboardComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/MainModule.html" data-type="entity-link" >MainModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-MainModule-54d7ff9a70c3d83a335cce9d29257601"' : 'data-target="#xs-components-links-module-MainModule-54d7ff9a70c3d83a335cce9d29257601"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-MainModule-54d7ff9a70c3d83a335cce9d29257601"' :
+                                            'id="xs-components-links-module-MainModule-54d7ff9a70c3d83a335cce9d29257601"' }>
+                                            <li class="link">
+                                                <a href="components/MainComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MainComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/NgLoggerModule.html" data-type="entity-link" >NgLoggerModule</a>

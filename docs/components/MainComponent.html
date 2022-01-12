@@ -28,18 +28,17 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >BuildConfigService</li>
+  <li>Components</li>
+  <li
+  >
+  MainComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -49,32 +48,71 @@
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>libs/common-ng/src/lib/build-config/build-config.service.ts</code>
-        </p>
-
-
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Provides an interface to gather the build config
-from the BUILD_CONFIG_PATH injectable.
-By default it is assumed to be just at <code>config.json</code>
-within the root public folder.</p>
-
-            </p>
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>apps/internal-ng/src/app/core/main/main.component.ts</code>
+</p>
 
 
 
-            <section>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>nx-workspace-template-main</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -88,7 +126,7 @@ within the root public folder.</p>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#buildConfig$" >buildConfig$</a>
+                                <a href="#configService" >configService</a>
                             </li>
                         </ul>
                     </td>
@@ -103,18 +141,18 @@ within the root public folder.</p>
     </table>
 </section>
 
-            <section>
+    <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, config: <a href="../interfaces/BuildConfig.html" target="_self">BuildConfigConfig</a>)</code>
+<code>constructor(configService: <a href="../injectables/BuildConfigService.html" target="_self">BuildConfigService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/common-ng/src/lib/build-config/build-config.service.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/internal-ng/src/app/core/main/main.component.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -132,22 +170,10 @@ within the root public folder.</p>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>http</td>
+                                                        <td>configService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>config</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../interfaces/BuildConfig.html" target="_self" >BuildConfigConfig</a></code>
+                                                                        <code><a href="../injectables/BuildConfigService.html" target="_self" >BuildConfigService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -165,7 +191,11 @@ within the root public folder.</p>
 </section>
 
 
-            <section>
+
+
+
+
+    <section>
     
     <h3 id="inputs">
         Properties
@@ -174,93 +204,124 @@ within the root public folder.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="buildConfig$"></a>
+                    <a name="configService"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
-                        <span ><b>buildConfig$</b></span>
-                        <a href="#buildConfig$"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>configService</b></span>
+                        <a href="#configService"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(() &#x3D;&gt; {
-    if (isBuildConfigWithPathConfig(this.config))
-      return this.http
-        .get&lt;BuildConfig&gt;(this.config.path)
-        .pipe(shareReplay({ bufferSize: 1, refCount: true }));
-    if (isBuildConfigWithoutPathConfig(this.config))
-      return of(this.config.overrides);
-    throw new Error(
-      &#x60;Invalid build config configuration: ${JSON.stringify(this.config)}&#x60;
-    );
-  })()</code>
+                        <i>Type : </i>        <code><a href="../injectables/BuildConfigService.html" target="_self" >BuildConfigService</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/common-ng/src/lib/build-config/build-config.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">apps/internal-ng/src/app/core/main/main.component.ts:11</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>The build config file contents. Will be cached after the initial call.</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
 </section>
 
-    </div>
+</div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Inject, Injectable } from &#x27;@angular/core&#x27;;
-import { of, shareReplay } from &#x27;rxjs&#x27;;
-import { BuildConfig } from &#x27;./build-config&#x27;;
-import {
-  BuildConfigConfig,
-  BUILD_CONFIG_CONFIG,
-  isBuildConfigWithoutPathConfig,
-  isBuildConfigWithPathConfig,
-} from &#x27;./build-config-config&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component } from &#x27;@angular/core&#x27;;
+import { BuildConfigService } from &#x27;@nx-workspace-template/common-ng&#x27;;
 
-/**
- * Provides an interface to gather the build config
- * from the BUILD_CONFIG_PATH injectable.
- * By default it is assumed to be just at &#x60;config.json&#x60;
- * within the root public folder.
- */
-@Injectable()
-export class BuildConfigService {
-  /**
-   * The build config file contents. Will be cached after the initial call.
-   */
-  public buildConfig$ &#x3D; (() &#x3D;&gt; {
-    if (isBuildConfigWithPathConfig(this.config))
-      return this.http
-        .get&lt;BuildConfig&gt;(this.config.path)
-        .pipe(shareReplay({ bufferSize: 1, refCount: true }));
-    if (isBuildConfigWithoutPathConfig(this.config))
-      return of(this.config.overrides);
-    throw new Error(
-      &#x60;Invalid build config configuration: ${JSON.stringify(this.config)}&#x60;
-    );
-  })();
-
-  constructor(
-    private readonly http: HttpClient,
-    @Inject(BUILD_CONFIG_CONFIG) private readonly config: BuildConfigConfig
-  ) {}
+@Component({
+  selector: &#x27;nx-workspace-template-main&#x27;,
+  templateUrl: &#x27;./main.component.html&#x27;,
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MainComponent {
+  constructor(public configService: BuildConfigService) {}
 }
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;header&gt;
+  &lt;mat-toolbar color&#x3D;&quot;primary&quot;&gt;
+    &lt;mat-toolbar-row fxLayout&#x3D;&quot;row&quot;
+                     fxLayoutAlign&#x3D;&quot;space-between center&quot;&gt;
+
+      &lt;div fxLayout&#x3D;&quot;row&quot;
+           fxLayoutAlign&#x3D;&quot;start center&quot;
+           fxLayoutGap&#x3D;&quot;8px&quot;&gt;
+        &lt;button mat-icon-button
+                type&#x3D;&quot;button&quot;
+                aria-label&#x3D;&quot;Toggle Side Nav&quot;&gt;
+          &lt;mat-icon&gt;menu&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;a routerLink&#x3D;&quot;/&quot;
+           class&#x3D;&quot;norm&quot;
+           fxHide.xs&gt;
+          nx-workspace-template
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;mat-chip-list *ngIf&#x3D;&quot;configService.buildConfig$ | ngrxPush as config&quot;&gt;
+          &lt;mat-chip [title]&#x3D;&quot;config | json&quot;
+                    color&#x3D;&quot;accent&quot;
+                    selected&gt;
+            {{config.revision}}
+          &lt;/mat-chip&gt;
+        &lt;/mat-chip-list&gt;
+      &lt;/div&gt;
+
+    &lt;/mat-toolbar-row&gt;
+  &lt;/mat-toolbar&gt;
+&lt;/header&gt;
+
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><header>  <mat-toolbar color="primary">    <mat-toolbar-row fxLayout="row"                     fxLayoutAlign="space-between center">      <div fxLayout="row"           fxLayoutAlign="start center"           fxLayoutGap="8px">        <button mat-icon-button                type="button"                aria-label="Toggle Side Nav">          <mat-icon>menu</mat-icon>        </button>        <a routerLink="/"           class="norm"           fxHide.xs>          nx-workspace-template        </a>      </div>      <div>        <mat-chip-list *ngIf="configService.buildConfig$ | ngrxPush as config">          <mat-chip [title]="config | json"                    color="accent"                    selected>            {{config.revision}}          </mat-chip>        </mat-chip-list>      </div>    </mat-toolbar-row>  </mat-toolbar></header><router-outlet></router-outlet></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'nx-workspace-template-root'},{'name': 'DashboardComponent', 'selector': 'nx-workspace-template-dashboard'},{'name': 'MainComponent', 'selector': 'nx-workspace-template-main'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MainComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
 
 
 
@@ -289,8 +350,8 @@ export class BuildConfigService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'BuildConfigService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
