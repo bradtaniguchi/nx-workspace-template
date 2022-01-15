@@ -174,6 +174,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/BuildConfigService.html" data-type="entity-link" >BuildConfigService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/ErrorHandlerService.html" data-type="entity-link" >ErrorHandlerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/GlobalErrorHandler.html" data-type="entity-link" >GlobalErrorHandler</a>
                                 </li>
                                 <li class="link">
