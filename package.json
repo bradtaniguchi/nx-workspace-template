@@ -78,6 +78,8 @@
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "http-server": "^13.0.0",
     "husky": "^7.0.4",
     "jest": "27.2.3",

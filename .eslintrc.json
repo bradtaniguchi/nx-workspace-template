@@ -1,5 +1,6 @@
 {
   "root": true,
+  "extends": ["eslint:recommended", "prettier"],
   "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx"],
   "overrides": [
