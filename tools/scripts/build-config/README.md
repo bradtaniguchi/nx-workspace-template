@@ -7,10 +7,18 @@ used by the `build-config` service of the `common-ng` lib.
 
 ```bash
 nx run build-config:generate
+node ./tools/scripts/build-config
 ```
 
 or to specify the output path+file:
 
 ```bash
-nx run build-config:generate --path=./dist/example/config.json
+node ./tools/scripts/build-config --path=./dist/example/config.json
 ```
+
+
+## TODO
+
+This will be moved to a generator, see:
+
+https://nx.dev/generators/workspace-generators

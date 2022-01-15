@@ -25,7 +25,7 @@ const getFileExists = (path) =>
 const createNestedFolderPath = (path) => mkdir(path, { recursive: true });
 
 const getAngularVersion = () =>
-  readFile(join(__dirname, '../../package.json'), 'utf8').then(
+  readFile(join(__dirname, '../../../package.json'), 'utf8').then(
     (data) => JSON.parse(data).dependencies['@angular/core']
   );
 
@@ -43,7 +43,7 @@ const getJson = ({ revision, angularVersion }) => `{
     const { argv } = yargs(hideBin(process.argv));
     let { path } = argv;
     path = path || 'dist/config.json';
-    path = join(__dirname, '../../', path);
+    path = join(__dirname, '../../../', path);
     console.log('checking path...', { path, argv });
     const [fileExists, revision, angularVersion] = await Promise.all([
       getFileExists(path),

@@ -81,7 +81,7 @@ jobs:
       - name: nx:workspace-lint
         run: nx workspace-lint
       - name: gen dep-graph
-        run: nx run dep-graph:html
+        run: nx dep-graph --file=dist/dep-graph/index.html
       - name: upload dep-graph
         uses: actions/upload-artifact@v2
         with:
