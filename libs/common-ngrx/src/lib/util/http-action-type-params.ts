@@ -6,13 +6,13 @@
  * the user-facing scheme it should work.
  */
 export interface HttpActionTypeParams<
-  RequestPayload extends unknown = unknown,
-  SuccessPaylod extends unknown = unknown,
-  FailurePayload extends unknown = unknown,
-  CancelPayload extends unknown = unknown
+  RequestPayload = unknown,
+  SuccessPayload = unknown,
+  FailurePayload = unknown,
+  CancelPayload = unknown
 > {
   request: RequestPayload;
-  success: SuccessPaylod;
+  success: SuccessPayload;
   failure: FailurePayload;
   cancel: CancelPayload;
 }
