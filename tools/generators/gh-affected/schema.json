@@ -15,6 +15,10 @@
     "batch": {
       "type": "number",
       "description": "How many tasks should be batch together. By default this is 1, so each task is run in its own process."
+    },
+    "bare": {
+      "type": "boolean",
+      "description": "If we are to just return the `id`, rather than the entire task object."
     }
   },
   "required": ["target"]
