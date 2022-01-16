@@ -30,11 +30,11 @@ export default async function (
   const affected = JSON.parse(output.stdout);
   const tasks = affected.tasks;
   if (!batch) {
-    return logger.log(tasks);
+    return logger.log(JSON.stringify(tasks));
   }
   const batchedTasks: unknown[] = [];
   const batchSize = Math.ceil(tasks.length / batch);
   for (let i = 0; i < tasks.length; i += batchSize)
     batchedTasks.push(tasks.slice(i, i + batchSize));
-  logger.log(batchedTasks);
+  logger.log(JSON.stringify(batchedTasks));
 }
