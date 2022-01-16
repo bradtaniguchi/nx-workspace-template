@@ -5,13 +5,13 @@ This tool is used to generate all library documentation using compodoc.
 To generate HTML docs use:
 
 ```bash
-nx run docs-generator:html
+npx compodoc -p tools/docs-generator/tsconfig.docs.json --output=dist/docs/
 ```
 
 once built, use the following to serve them locally
 
 ```bash
-nx run docs-generator:serve
+npx http-server dist/docs -p 4200
 ```
 
-they will then be available at port: http://localhost:4401
+they will then be available at port: http://localhost:4200/
