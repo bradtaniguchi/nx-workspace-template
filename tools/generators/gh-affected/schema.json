@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "gh-affected",
+  "type": "object",
+  "properties": {
+    "target": {
+      "type": "string",
+      "target": "The target to run on the affected"
+    },
+    "head": {
+      "type": "string",
+      "description": "Head of the current branch (usually HEAD)"
+    },
+    "batch": {
+      "type": "number",
+      "description": "How many tasks should be batch together. By default this is 1, so each task is run in its own process."
+    }
+  },
+  "required": ["target"]
+}
