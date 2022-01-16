@@ -12,6 +12,5 @@
         "index": 0
       }
     }
-  },
-  "required": ["path"]
+  }
 }
