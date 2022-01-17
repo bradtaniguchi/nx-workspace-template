@@ -8,7 +8,7 @@ Under the hood this primarily just manipulates the `nx print-affected` command d
 ## Usage
 
 ```bash
-nx workspace-generator gh-affected --target=lint
+npx nx workspace-generator gh-affected --target=lint --head=$GITHUB_REF --bare=true --batch=6
 ```
 
 ## Output

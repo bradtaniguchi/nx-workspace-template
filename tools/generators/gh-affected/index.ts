@@ -34,19 +34,30 @@ export default async function (
     );
     const affected = JSON.parse(output.stdout);
     const tasks = affected.tasks;
-    const toBare = (tasks: Array<unknown>) =>
-      (tasks as Array<{ id?: string }>).map((task: { id?: string }) =>
-        task && typeof task.id === 'string' ? task.id : ''
-      );
+    type Task = {
+      id: string;
+      overrides: {};
+      target: {
+        project: string;
+        target: string;
+      };
+      command: string;
+      outputs: Array<string>;
+    };
+    const toBare = (tasks: Array<Task>) =>
+      (tasks as Array<{ id?: string }>).map((task: { id?: string }) => task.id);
     if (!batch) {
       if (bare) return logger.log(JSON.stringify(toBare(tasks)));
       return logger.log(JSON.stringify(tasks));
     }
-    const batchedTasks: unknown[] = [];
+    const batchedTasks: Array<Array<Task>> = [];
     const batchSize = Math.ceil(tasks.length / batch);
     for (let i = 0; i < tasks.length; i += batchSize)
       batchedTasks.push(tasks.slice(i, i + batchSize));
-    if (bare) return logger.log(JSON.stringify(toBare(batchedTasks)));
+    if (bare)
+      return logger.log(
+        JSON.stringify(batchedTasks.map((tasks) => toBare(tasks)))
+      );
     logger.log(JSON.stringify(batchedTasks));
   } catch (err) {
     logger.error(err);
