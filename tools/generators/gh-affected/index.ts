@@ -20,7 +20,7 @@ export default async function (
      */
     batch?: number;
     /**
-     * If we are to just return the `id`, rather than the entire task object.
+     * If we are to just return the `target.project`, rather than the entire task object.
      */
     bare?: boolean;
   }
@@ -45,7 +45,7 @@ export default async function (
       outputs: Array<string>;
     };
     const toBare = (tasks: Array<Task>) =>
-      (tasks as Array<{ id?: string }>).map((task: { id?: string }) => task.id);
+      tasks.map((task) => task.target.project);
     if (!batch) {
       if (bare) return logger.log(JSON.stringify(toBare(tasks)));
       return logger.log(JSON.stringify(tasks));
