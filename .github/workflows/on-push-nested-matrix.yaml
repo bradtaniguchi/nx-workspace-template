@@ -111,7 +111,7 @@ jobs:
           echo "${{ join(matrix.TASKS, ',') }}"
 
       - name: run tasks
-        run: nx run-many --target=lint --projects="${{ join(matrix.TASKS, ',') }}"
+        run: npx nx run-many --target=lint --projects="${{ join(matrix.TASKS, ',') }}"
 
       # - name: execute task
       #   run: npx nx run ${{ matrix.TASKS.id }}
