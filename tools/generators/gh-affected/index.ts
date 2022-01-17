@@ -19,14 +19,10 @@ export default async function (
      * By default this is 1, so each task is run in its own process.
      */
     batch?: number;
-    /**
-     * If we are to just return the `target.project`, rather than the entire task object.
-     */
-    bare?: boolean;
   }
 ) {
   try {
-    const { target, head, batch, bare } = schema;
+    const { target, head, batch } = schema;
     const isMain = head === 'refs/heads/main';
     const BASE_SHA = isMain ? 'origin/main~1' : 'origin/main';
     const output = await exec(
@@ -46,19 +42,14 @@ export default async function (
     };
     const toBare = (tasks: Array<Task>) =>
       tasks.map((task) => task.target.project);
-    if (!batch) {
-      if (bare) return logger.log(JSON.stringify(toBare(tasks)));
-      return logger.log(JSON.stringify(tasks));
-    }
+    if (!batch) return logger.log(JSON.stringify(toBare(tasks)));
     const batchedTasks: Array<Array<Task>> = [];
     const batchSize = Math.ceil(tasks.length / batch);
     for (let i = 0; i < tasks.length; i += batchSize)
       batchedTasks.push(tasks.slice(i, i + batchSize));
-    if (bare)
-      return logger.log(
-        JSON.stringify(batchedTasks.map((tasks) => toBare(tasks)))
-      );
-    logger.log(JSON.stringify(batchedTasks));
+    return logger.log(
+      JSON.stringify(batchedTasks.map((tasks) => toBare(tasks)))
+    );
   } catch (err) {
     logger.error(err);
   }

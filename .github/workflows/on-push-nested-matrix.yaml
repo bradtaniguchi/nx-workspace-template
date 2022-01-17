@@ -43,17 +43,17 @@ jobs:
       - name: gen lint matrix
         id: gen-lint-matrix
         run: |
-          LINT_TASKS=$(npx nx workspace-generator gh-affected --target=lint --head=$GITHUB_REF --bare=true --batch=6)
+          LINT_TASKS=$(npx nx workspace-generator gh-affected --target=lint --head=$GITHUB_REF --batch=6)
           echo "::set-output name=LINT_TASKS::$LINT_TASKS"
       - name: gen test matrix
         id: gen-test-matrix
         run: |
-          TEST_TASKS=$(npx nx workspace-generator gh-affected --target=test --head=$GITHUB_REF --bare=true --batch=4)
+          TEST_TASKS=$(npx nx workspace-generator gh-affected --target=test --head=$GITHUB_REF --batch=4)
           echo "::set-output name=TEST_TASKS::$TEST_TASKS"
       - name: gen build matrix
         id: gen-build-matrix
         run: |
-          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF --bare=true --batch=2)
+          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF --batch=2)
           echo "::set-output name=BUILD_TASKS::$BUILD_TASKS"
 
   # Prints the matrix output, useful for debugging

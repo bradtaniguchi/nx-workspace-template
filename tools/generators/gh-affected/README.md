@@ -7,64 +7,52 @@ Under the hood this primarily just manipulates the `nx print-affected` command d
 
 ## Usage
 
+This generator can be used in one of two ways.
+
+1. "flat" mode, which will print out the list of affected projects for the given `target`.
+   This is essentially the same as the `nx print-affected` command, except simplified down to just the `target.project` property.
+2. "batch" mode, which will print out the list of affected projects, except in "batched" arrays.
+   This allows for matrix-related features of github-actions to be leveraged.
+
+The batch mode is the primary mode this utility should be used, to get the most out of github-actions.
+
+### Batch Mode
+
+**Example:**
+
 ```bash
-npx nx workspace-generator gh-affected --target=lint --head=$GITHUB_REF --bare=true --batch=6
+npx nx workspace-generator gh-affected --target=lint --head=<HEAD> --batch=6
 ```
 
-## Output
+**Output:**
 
-Using the above command, the following output is printed to stdout:
-
-```js
+```json
 [
-  {
-    id: 'common-ngrx:lint',
-    overrides: {},
-    target: { project: 'common-ngrx', target: 'lint' },
-    command: 'npx nx run common-ngrx:lint',
-    outputs: [],
-  },
-  {
-    id: 'internal-ng:lint',
-    overrides: {},
-    target: { project: 'internal-ng', target: 'lint' },
-    command: 'npx nx run internal-ng:lint',
-    outputs: [],
-  },
-  {
-    id: 'internal-ng-e2e:lint',
-    overrides: {},
-    target: { project: 'internal-ng-e2e', target: 'lint' },
-    command: 'npx nx run internal-ng-e2e:lint',
-    outputs: ['undefined'],
-  },
-  {
-    id: 'common:lint',
-    overrides: {},
-    target: { project: 'common', target: 'lint' },
-    command: 'npx nx run common:lint',
-    outputs: [],
-  },
-  {
-    id: 'common-ng:lint',
-    overrides: {},
-    target: { project: 'common-ng', target: 'lint' },
-    command: 'npx nx run common-ng:lint',
-    outputs: [],
-  },
-  {
-    id: 'gh-codespaces:lint',
-    overrides: {},
-    target: { project: 'gh-codespaces', target: 'lint' },
-    command: 'npx nx run gh-codespaces:lint',
-    outputs: ['undefined'],
-  },
-  {
-    id: 'script-loader:lint',
-    overrides: {},
-    target: { project: 'script-loader', target: 'lint' },
-    command: 'npx nx run script-loader:lint',
-    outputs: [],
-  },
-];
+  ["common-ngrx", "internal-ng"],
+  ["internal-ng-e2e", "common"],
+  ["common-ng", "gh-codespaces"],
+  ["script-loader"]
+]
+```
+
+## Flat Mode
+
+**Example:**
+
+```bash
+npx nx workspace-generator gh-affected --target=lint --head=<HEAD>
+```
+
+**Output:**
+
+```json
+[
+  "common-ngrx",
+  "internal-ng",
+  "internal-ng-e2e",
+  "common",
+  "common-ng",
+  "gh-codespaces",
+  "script-loader"
+]
 ```
