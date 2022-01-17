@@ -82,7 +82,7 @@ jobs:
       - print-matrix
     strategy:
       matrix:
-        TASKS: ${{ needs.gen-matrixes.outputs.LINT_TASKS }}
+        TASKS: ${{ fromJSON(needs.gen-matrixes.outputs.LINT_TASKS) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
@@ -108,10 +108,10 @@ jobs:
       - name: print task-id
         # this will be an array of tasks.
         run: |
-          echo "${{ matrix.TASKS }}"
+          echo "${{ join(matrix.TASKS, ',') }}"
 
       - name: run tasks
-        run: nx run-many --target=lint --projects="${{ fromJSON(matrix.TASKS) }}"
+        run: nx run-many --target=lint --projects="${{ join(matrix.TASKS, ',') }}"
 
       # - name: execute task
       #   run: npx nx run ${{ matrix.TASKS.id }}
