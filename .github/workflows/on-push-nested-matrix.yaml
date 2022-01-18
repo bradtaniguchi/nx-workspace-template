@@ -22,9 +22,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
         with:
-          # get lfs items
           lfs: false
-          # fetch all commits, slower but required to pass to nx
           fetch-depth: 0
       - name: setup node
         uses: actions/setup-node@v2
@@ -86,11 +84,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
-        with:
-          # get lfs items
-          lfs: true
-          # fetch all commits, slower but required to pass to nx
-          fetch-depth: 0
       - name: setup node
         uses: actions/setup-node@v2
         with:
@@ -106,12 +99,83 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
       - name: print task-id
-        # this will be an array of tasks.
-        run: |
-          echo "${{ join(matrix.TASKS, ',') }}"
-
+        run: echo "${{ join(matrix.TASKS, ',') }}"
       - name: run tasks
         run: npx nx run-many --target=lint --projects="${{ join(matrix.TASKS, ',') }}"
 
-      # - name: execute task
-      #   run: npx nx run ${{ matrix.TASKS.id }}
+  # Handle testing tasks for affected projects.
+  test-affected:
+    name: lint affected
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    if: ${{ needs.gen-matrixes.outputs.TEST_TASKS != '[]' }}
+    needs:
+      - gen-matrixes
+      - print-matrix
+      - lint-affected
+    strategy:
+      matrix:
+        TASKS: ${{ fromJSON(needs.gen-matrixes.outputs.TEST_TASKS) }}
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
+          cache: 'npm'
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+      - name: print task-id
+        run: echo "${{ join(matrix.TASKS, ',') }}"
+      - name: run tasks
+        run: npx nx run-many --target=test --projects="${{ join(matrix.TASKS, ',') }}"
+
+  # Handle building tasks for affected projects.
+  build-affected:
+    name: lint affected
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    if: ${{ needs.gen-matrixes.outputs.BUILD_TASKS != '[]' }}
+    needs:
+      - gen-matrixes
+      - print-matrix
+      - lint-affected
+      - test-affected
+    strategy:
+      matrix:
+        TASKS: ${{ fromJSON(needs.gen-matrixes.outputs.BUILD_TASKS) }}
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
+          cache: 'npm'
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+      - name: print task-id
+        run: echo "${{ join(matrix.TASKS, ',') }}"
+      - name: run tasks
+        run: npx nx run-many --target=build --projects="${{ join(matrix.TASKS, ',') }}"
+  # TODO: add the following:
+  # lighthouse
+  # e2e
+  # deploy
