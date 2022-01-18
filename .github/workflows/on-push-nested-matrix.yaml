@@ -105,7 +105,7 @@ jobs:
 
   # Handle testing tasks for affected projects.
   test-affected:
-    name: lint affected
+    name: test affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
     if: ${{ needs.gen-matrixes.outputs.TEST_TASKS != '[]' }}
@@ -140,7 +140,7 @@ jobs:
 
   # Handle building tasks for affected projects.
   build-affected:
-    name: lint affected
+    name: build affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
     if: ${{ needs.gen-matrixes.outputs.BUILD_TASKS != '[]' }}
