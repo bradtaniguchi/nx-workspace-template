@@ -9,5 +9,5 @@
     "importHelpers": false,
     "strict": true
   },
-  "include": ["**/*.ts"]
+  "include": ["./**/*.ts"]
 }
