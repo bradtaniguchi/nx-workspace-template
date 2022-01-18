@@ -21,17 +21,15 @@ The batch mode is the primary mode this utility should be used, to get the most 
 **Example:**
 
 ```bash
-npx nx workspace-generator gh-affected --target=lint --head=<HEAD> --batch=6
+npx nx workspace-generator gh-affected --target=lint --head=<HEAD> --batch=3
 ```
 
 **Output:**
 
 ```json
 [
-  ["common-ngrx", "internal-ng"],
-  ["internal-ng-e2e", "common"],
-  ["common-ng", "gh-codespaces"],
-  ["script-loader"]
+  ["common-ngrx", "internal-ng", "internal-ng-e2e"],
+  ["common", "common-ng", "gh-codespaces"]
 ]
 ```
 
