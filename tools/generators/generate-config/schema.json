@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "generate-config",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "Output path for the generated config file",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    }
+  }
+}

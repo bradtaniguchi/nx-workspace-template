@@ -63,6 +63,7 @@
     "@nrwl/angular": "13.4.5",
     "@nrwl/cli": "13.4.5",
     "@nrwl/cypress": "13.4.5",
+    "@nrwl/devkit": "13.4.5",
     "@nrwl/eslint-plugin-nx": "13.4.5",
     "@nrwl/jest": "13.4.5",
     "@nrwl/linter": "13.4.5",

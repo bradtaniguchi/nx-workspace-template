@@ -12,6 +12,12 @@ and is used to run multiple targets, for multiple projects in `nx`.
 
 Below is notes for an experimental script that generates a matrix of targets from `nx print-affected`.
 
+Example call:
+
+```
+nx print-affected --base-origin/main --target=build
+```
+
 example output:
 
 ```json
