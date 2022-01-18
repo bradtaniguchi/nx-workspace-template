@@ -22,7 +22,8 @@ export default async function (
   }
 ) {
   try {
-    const { target, head, batch } = schema;
+    const { target, head } = schema;
+    let { batch } = schema;
     const isMain = head === 'refs/heads/main';
     const BASE_SHA = isMain ? 'origin/main~1' : 'origin/main';
     const output = await exec(
@@ -30,6 +31,7 @@ export default async function (
     );
     const affected = JSON.parse(output.stdout);
     const tasks = affected.tasks;
+
     type Task = {
       id: string;
       overrides: {};
@@ -40,15 +42,24 @@ export default async function (
       command: string;
       outputs: Array<string>;
     };
+
     const toBare = (tasks: Array<Task>) =>
       tasks.map((task) => task.target.project);
+
     if (!batch) return logger.log(JSON.stringify(toBare(tasks)));
+    if (batch < 1) batch = 1;
     const batchedTasks: Array<Array<Task>> = [];
-    const batchSize = Math.ceil(tasks.length / batch);
-    for (let i = 0; i < tasks.length; i += batchSize)
-      batchedTasks.push(tasks.slice(i, i + batchSize));
+    const batches = Math.ceil(tasks.length / batch);
+
+    for (let i = 0; i <= batches; i += batch)
+      batchedTasks.push(tasks.slice(i, i + batch));
+
     return logger.log(
-      JSON.stringify(batchedTasks.map((tasks) => toBare(tasks)))
+      JSON.stringify(
+        batchedTasks
+          .filter((batchedTasks) => batchedTasks.length)
+          .map((tasks) => toBare(tasks))
+      )
     );
   } catch (err) {
     logger.error(err);
