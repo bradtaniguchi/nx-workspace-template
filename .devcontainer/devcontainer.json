@@ -1,12 +1,11 @@
 {
-  "forwardPorts": [4200, 4400, 4401],
+  "forwardPorts": [4200],
   "remoteEnv": {
     "DEV_ENV": "codespaces"
   },
   "postCreateCommand": "bash .devcontainer/install.sh",
   "extensions": [
     "aaron-bond.better-comments",
-    "alefragnani.project-manager",
     "Angular.ng-template",
     "christian-kohler.path-intellisense",
     "cssho.vscode-svgviewer",
@@ -19,8 +18,6 @@
     "GitHub.vscode-pull-request-github",
     "johnpapa.angular-essentials",
     "johnpapa.Angular2",
-    "johnpapa.vscode-peacock",
-    "mhutchie.git-graph",
     "mikestead.dotenv",
     "nrwl.angular-console",
     "PKief.material-icon-theme",
