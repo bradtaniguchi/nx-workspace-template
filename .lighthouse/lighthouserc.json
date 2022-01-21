@@ -1,5 +1,10 @@
 {
   "ci": {
-    "collect": { "staticDistDir": "./dist/static" }
+    "collect": {
+      "settings": {
+        "url": "http://localhost:4200/",
+        "chromeFlags": "--disable-gpu --no-sandbox --headless"
+      }
+    }
   }
 }

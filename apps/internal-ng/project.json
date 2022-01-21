@@ -89,6 +89,22 @@
         "jestConfig": "apps/internal-ng/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "lighthouse": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx http-server dist/internal-ng -p 4200",
+            "description": "Run the app via http-server"
+          },
+          {
+            "command": "npx lighthouse http://localhost:4200/ --config-path=./.lighthouse/lighthouserc.json",
+            "description": "Run lighthouse at localhost:4200"
+          }
+        ],
+        "parallel": true
+      }
     }
   },
   "tags": ["type:app"],
