@@ -45,3 +45,6 @@ Thumbs.db
 
 # Angular-cli caching
 .angular
+
+# lighthouse specific
+.lighthouseci/
