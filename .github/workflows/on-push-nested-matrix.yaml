@@ -179,13 +179,14 @@ jobs:
         id: get-build-output
         run: echo "build_output=$(ls -d ./dist/apps/*/)" >> $GITHUB_ENV
       - name: print build output
+        # example: ./dist/apps/interna-ng
         run: echo "${{ env.build_output }}"
-      # TODO: get the list of folders to build from the matrix
-      # - name: save artifacts
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: build-artifacts-${{ join(matrix.TASKS, '-') }}-$GITHUB_SHA
-      #     path: ./dist/**/*
+       - name: save artifacts
+         uses: actions/upload-artifact@v2
+         with:
+           name: build-artifacts-${{ join(matrix.TASKS, '-') }}-$GITHUB_SHA
+           path: ${{ env.build_output }}
+           retention-days: 1
   # TODO: add the following:
   # lighthouse
   # e2e
