@@ -58,7 +58,7 @@ jobs:
         id: gen-lighthouse-matrix
         run: |
           LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=1)
-          echo "::set-output name=LIGHTHOUSE_TASKS::$BUILD_TASKS"
+          echo "::set-output name=LIGHTHOUSE_TASKS::$LIGHTHOUSE_TASKS"
 
   # Prints the matrix output, useful for debugging
   # See the bottom of this file for an example printout.
@@ -196,7 +196,7 @@ jobs:
 
   # Handle building tasks for affected projects.
   lighhouse-affected:
-    name: build affected
+    name: lighthouse affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
     if: ${{ needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS != '[]' }}
