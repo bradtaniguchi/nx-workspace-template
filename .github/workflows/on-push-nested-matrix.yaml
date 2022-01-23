@@ -74,6 +74,8 @@ jobs:
         run: echo "${{ needs.gen-matrixes.outputs.TEST_TASKS }}"
       - name: print build matrix
         run: echo "${{ needs.gen-matrixes.outputs.BUILD_TASKS }}"
+      - name: print lighthouse matrix
+        run: echo "${{ needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS }}"
 
   # Handle linting tasks for affected projects.
   lint-affected:
