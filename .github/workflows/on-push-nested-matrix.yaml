@@ -82,7 +82,7 @@ jobs:
     name: lint affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    if: ${{ needs.gen-matrixes.outputs.LINT_TASKS != '[]' }}
+    if: ${{ needs.gen-matrixes.outputs.LINT_TASKS != '' && needs.gen-matrixes.outputs.LINT_TASKS != '[]' }}
     needs:
       - gen-matrixes
       - print-matrix
@@ -116,7 +116,7 @@ jobs:
     name: test affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    if: ${{ needs.gen-matrixes.outputs.TEST_TASKS != '[]' }}
+    if: ${{ needs.gen-matrixes.outputs.TEST_TASKS != '' && needs.gen-matrixes.outputs.TEST_TASKS != '[]' }}
     needs:
       - gen-matrixes
       - print-matrix
@@ -151,7 +151,7 @@ jobs:
     name: build affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    if: ${{ needs.gen-matrixes.outputs.BUILD_TASKS != '[]' }}
+    if: ${{ needs.gen-matrixes.outputs.BUILD_TASKS != '' && needs.gen-matrixes.outputs.BUILD_TASKS != '[]' }}
     needs:
       - gen-matrixes
       - print-matrix
@@ -201,7 +201,7 @@ jobs:
     name: lighthouse affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    if: ${{ needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS != '[]' }}
+    if: ${{ needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS != '' && needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS != '[]' }}
     needs:
       - gen-matrixes
       - print-matrix
