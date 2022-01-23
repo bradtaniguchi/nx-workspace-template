@@ -89,6 +89,12 @@
         "jestConfig": "apps/internal-ng/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "lighthouse": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.staticDistDir=./dist/apps/internal-ng"
+      }
     }
   },
   "tags": ["type:app"],
