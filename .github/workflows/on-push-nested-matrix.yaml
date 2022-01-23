@@ -175,6 +175,17 @@ jobs:
         run: echo "${{ join(matrix.TASKS, ',') }}"
       - name: run tasks
         run: npx nx run-many --target=build --projects="${{ join(matrix.TASKS, ',') }}"
+      - name: get build output
+        id: get-build-output
+        run: echo "build_output=$(ls -d ./dist/apps/*/)" >> $GITHUB_ENV
+      - name: print build output
+        run: echo "${{ env.build_output }}"
+      # TODO: get the list of folders to build from the matrix
+      # - name: save artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: build-artifacts-${{ join(matrix.TASKS, '-') }}-$GITHUB_SHA
+      #     path: ./dist/**/*
   # TODO: add the following:
   # lighthouse
   # e2e
