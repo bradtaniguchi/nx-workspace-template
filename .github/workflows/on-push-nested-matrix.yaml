@@ -57,7 +57,7 @@ jobs:
       - name: gen lighthouse matrix
         id: gen-lighthouse-matrix
         run: |
-          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=1)
+          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=2)
           echo "::set-output name=LIGHTHOUSE_TASKS::$LIGHTHOUSE_TASKS"
 
   # Prints the matrix output, useful for debugging
