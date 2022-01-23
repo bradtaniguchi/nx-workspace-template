@@ -184,7 +184,7 @@ jobs:
       - name: save artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${ $GITHUB_SHA }
+          name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${{ github.sha }}
           path: ${{ env.build_output }}
           retention-days: 1
   # TODO: add the following:
