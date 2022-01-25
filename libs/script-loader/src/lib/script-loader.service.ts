@@ -49,6 +49,7 @@ export class ScriptLoaderService {
     if (!scripts) {
       return [];
     }
+
     return Promise.all(scripts.map((script) => this.load(script)));
   }
   /**
@@ -80,11 +81,13 @@ export class ScriptLoaderService {
     const head = this.document.getElementsByTagName('head')[0];
     const promise = new Promise((resolve) => (scriptElement.onload = resolve));
     head.appendChild(scriptElement);
+
     return promise
       .then(() => {
         if (typeof callback === 'function') {
           callback();
         }
+
         return;
       })
       .then(() => scriptElement);

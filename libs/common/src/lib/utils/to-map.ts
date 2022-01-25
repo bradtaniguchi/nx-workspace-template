@@ -22,6 +22,7 @@ export const toMap = <
   return entities.reduce((acc, entity) => {
     const keyValue = entity[key || 'id'];
     if (isIndexableValue(keyValue)) acc[keyValue as RecordKey] = entity;
+
     return acc;
   }, {} as Record<RecordKey, Entity>);
 };

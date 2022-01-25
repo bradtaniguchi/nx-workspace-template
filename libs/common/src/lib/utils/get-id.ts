@@ -21,5 +21,6 @@ export const getId = <T extends DocumentId>(
   if (isDocumentWithId(id)) {
     return DocumentId<T>(id.id);
   }
+
   return '';
 };

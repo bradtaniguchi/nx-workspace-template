@@ -26,7 +26,8 @@ export class RouteLoadingStateService extends ComponentStore<RouteLoadingState> 
           if (event instanceof NavigationStart) return true;
           if (event instanceof NavigationEnd) return false;
           if (event instanceof GuardsCheckEnd) return false;
-          // null is a special value to prevent emittions of extra changes
+
+          // null is a special value to prevent emissions of extra changes
           return null;
         }),
         filter((loading) => loading !== null)
