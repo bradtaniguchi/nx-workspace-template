@@ -24,7 +24,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "clean": "npx rimraf dist node_modules/.cache/nx *.logs .eslintcache .angular .lighthouserc.js",
+    "clean": "npx rimraf dist node_modules/.cache/nx *.logs .eslintcache .angular .lighthouserc.js coverage",
     "postinstall": "ngcc --properties es2015 browser module main",
     "prepare": "husky install"
   },
