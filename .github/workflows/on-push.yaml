@@ -18,7 +18,7 @@ jobs:
       LINT_TASKS: ${{ steps.gen-lint-matrix.outputs.LINT_TASKS }}
       TEST_TASKS: ${{ steps.gen-test-matrix.outputs.TEST_TASKS }}
       BUILD_TASKS: ${{ steps.gen-build-matrix.outputs.BUILD_TASKS }}
-      LIGHTHOUSE_TASKS: ${{ steps.gen-build-matrix.outputs.LIGHTHOUSE_TASKS }}
+      LIGHTHOUSE_TASKS: ${{ steps.gen-lighthouse-matrix.outputs.LIGHTHOUSE_TASKS }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
