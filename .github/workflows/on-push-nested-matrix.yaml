@@ -187,7 +187,7 @@ jobs:
         id: get-build-output
         run: echo "build_output=$(ls -d ./dist/apps/*/)" >> $GITHUB_ENV
       - name: print build output
-        # example: ./dist/apps/interna-ng
+        # example: ./dist/apps/internal-ng
         run: echo "${{ env.build_output }}"
       - name: save artifacts
         uses: actions/upload-artifact@v2
@@ -197,7 +197,7 @@ jobs:
           retention-days: 1
 
   # Handle building tasks for affected projects.
-  lighhouse-affected:
+  lighthouse-affected:
     name: lighthouse affected
     timeout-minutes: 10
     runs-on: ubuntu-latest
