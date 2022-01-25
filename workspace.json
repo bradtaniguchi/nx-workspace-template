@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "projects": {
+    "common": "libs/common",
+    "common-material": "libs/common-material",
+    "common-ng": "libs/common-ng",
+    "common-ngrx": "libs/common-ngrx",
+    "gh-codespaces": "libs/gh-codespaces",
+    "internal-ng": "apps/internal-ng",
+    "internal-ng-e2e": "apps/internal-ng-e2e",
+    "script-loader": "libs/script-loader"
+  }
+}
