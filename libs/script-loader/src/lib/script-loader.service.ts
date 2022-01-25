@@ -19,6 +19,7 @@ export class ScriptLoaderService {
       element: HTMLScriptElement;
     }>
   >([]);
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
 
@@ -35,6 +36,7 @@ export class ScriptLoaderService {
       scriptLoaderLoaded.next(true);
     }
   }
+
   /**
    * Loads the list of scripts.
    * **Does not currently check to see if they are already loaded!**
@@ -52,6 +54,7 @@ export class ScriptLoaderService {
 
     return Promise.all(scripts.map((script) => this.load(script)));
   }
+
   /**
    * Loads the individual scripts
    */
