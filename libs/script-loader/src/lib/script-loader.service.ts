@@ -19,6 +19,7 @@ export class ScriptLoaderService {
       element: HTMLScriptElement;
     }>
   >([]);
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
 
@@ -35,6 +36,7 @@ export class ScriptLoaderService {
       scriptLoaderLoaded.next(true);
     }
   }
+
   /**
    * Loads the list of scripts.
    * **Does not currently check to see if they are already loaded!**
@@ -49,8 +51,10 @@ export class ScriptLoaderService {
     if (!scripts) {
       return [];
     }
+
     return Promise.all(scripts.map((script) => this.load(script)));
   }
+
   /**
    * Loads the individual scripts
    */
@@ -60,10 +64,10 @@ export class ScriptLoaderService {
       (scriptsLoaded) => scriptsLoaded.src === src
     );
     if (existingScriptLoaded) {
-      // if the script is already loaded, skip it;
+      // If the script is already loaded, skip it;
       return existingScriptLoaded.element;
     }
-    // otherwise, create and add it
+    // Otherwise, create and add it
     const scriptElement = this.document.createElement('script');
     this.scriptsLoaded$.next([
       ...this.scriptsLoaded$.value,
@@ -80,11 +84,13 @@ export class ScriptLoaderService {
     const head = this.document.getElementsByTagName('head')[0];
     const promise = new Promise((resolve) => (scriptElement.onload = resolve));
     head.appendChild(scriptElement);
+
     return promise
       .then(() => {
         if (typeof callback === 'function') {
           callback();
         }
+
         return;
       })
       .then(() => scriptElement);

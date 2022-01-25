@@ -19,6 +19,7 @@ export class CanDeactivateGuard
       typeof (component as DeactivatableComponent).canDeactivate === 'function'
     );
   }
+
   /**
    * Returns if the component can be deactivated, or navigated away from by the user.
    *

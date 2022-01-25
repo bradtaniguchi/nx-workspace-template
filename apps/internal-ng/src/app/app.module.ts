@@ -35,12 +35,12 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
       { initialNavigation: 'enabledBlocking' }
     ),
 
-    // core modules
+    // Core modules
     MainModule,
-    // nested non-lazy loaded modules
+    // Nested non-lazy loaded modules
     DashboardModule,
 
-    // global/injection modules
+    // Global/injection modules
     BuildConfigModule.forRoot(
       environment.production
         ? {

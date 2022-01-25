@@ -10,5 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 export const getFinalChild = (root: ActivatedRoute) => {
   let child = root;
   while (child.firstChild) child = child.firstChild;
+
   return child;
 };

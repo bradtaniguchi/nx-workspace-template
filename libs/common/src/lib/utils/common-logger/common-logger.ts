@@ -10,6 +10,7 @@ export class CommonLogger {
   public get hidden(): Array<'log' | 'debug' | 'warn' | 'error'> {
     return this.config?.hidden || [];
   }
+
   /**
    * @param config - configuration object
    */

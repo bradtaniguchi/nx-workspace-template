@@ -19,6 +19,53 @@
               }
             ]
           }
+        ],
+        "padding-line-between-statements": [
+          "error",
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": "return"
+          },
+          {
+            "blankLine": "any",
+            "prev": ["const", "let", "var"],
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "directive",
+            "next": "*"
+          }
+        ],
+        "capitalized-comments": [
+          "error",
+          "always",
+          {
+            "ignorePattern": "pragma|ignored",
+            "ignoreInlineComments": true
+          }
+        ],
+        "lines-around-comment": [
+          "error",
+          {
+            "beforeBlockComment": true,
+            "allowBlockStart": true,
+            "allowObjectStart": true,
+            "allowArrayStart": true,
+            "allowClassStart": true,
+            "allowBlockEnd": true,
+            "allowObjectEnd": true,
+            "allowArrayEnd": true,
+            "allowClassEnd": true
+          }
+        ],
+        "lines-between-class-members": [
+          "error",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
         ]
       }
     },
