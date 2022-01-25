@@ -37,6 +37,14 @@
             "prev": "directive",
             "next": "*"
           }
+        ],
+        "capitalized-comments": [
+          "error",
+          "always",
+          {
+            "ignorePattern": "pragma|ignored",
+            "ignoreInlineComments": true
+          }
         ]
       }
     },

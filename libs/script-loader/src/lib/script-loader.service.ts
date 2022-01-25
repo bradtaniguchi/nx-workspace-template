@@ -61,10 +61,10 @@ export class ScriptLoaderService {
       (scriptsLoaded) => scriptsLoaded.src === src
     );
     if (existingScriptLoaded) {
-      // if the script is already loaded, skip it;
+      // If the script is already loaded, skip it;
       return existingScriptLoaded.element;
     }
-    // otherwise, create and add it
+    // Otherwise, create and add it
     const scriptElement = this.document.createElement('script');
     this.scriptsLoaded$.next([
       ...this.scriptsLoaded$.value,

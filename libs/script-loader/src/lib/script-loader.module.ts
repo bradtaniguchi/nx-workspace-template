@@ -15,7 +15,7 @@ import { ReplaySubject } from 'rxjs';
   ],
 })
 export class ScriptLoaderModule {
-  // **note** this is injected so the script loader service is setup, but handles everything internally
+  // **Note** this is injected so the script loader service is setup, but handles everything internally
   constructor(private scriptLoaderService: ScriptLoaderService) {}
   public static forRoot(params?: {
     /**
@@ -27,7 +27,7 @@ export class ScriptLoaderModule {
       ngModule: ScriptLoaderModule,
       providers: [
         ScriptLoaderService,
-        // setup init scripts, if given
+        // Setup init scripts, if given
         params && params.scripts
           ? {
               provide: SCRIPT_LOADER_INIT_SCRIPTS,
@@ -36,7 +36,7 @@ export class ScriptLoaderModule {
               },
             }
           : [],
-        // loaded event emitter, if there is one
+        // Loaded event emitter, if there is one
         {
           provide: SCRIPT_LOADER_LOADED,
           useValue: new ReplaySubject<boolean>(1),
