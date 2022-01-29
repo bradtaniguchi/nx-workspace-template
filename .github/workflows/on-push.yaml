@@ -238,8 +238,14 @@ jobs:
           path: ./dist/apps/${{ matrix.TASK }}
       - name: print dist
         run: ls -R ./dist/apps
-      - name: run tasks
+      - name: lighthouse-affected
         run: npx nx run ${{ matrix.TASK }}:lighthouse
+      - name: upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-${{ matrix.TASK }}-${{ github.sha }}
+          path: ./lighthouseci
+          retention-days: 1
   # TODO: add the following:
   # e2e
   # deploy
