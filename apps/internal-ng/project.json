@@ -95,6 +95,22 @@
       "options": {
         "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.staticDistDir=./dist/apps/internal-ng"
       }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx compodoc -p ./tools/docs/tsconfig.docs.json --output=dist/docs/",
+            "description": "Generate Internal docs to dist/docs"
+          },
+          {
+            "command": "npx nx dep-graph --file=dist/dep-graph.html",
+            "description": "Generate dep-graph at dist/dep-graph.html"
+          }
+        ],
+        "parallel": false
+      }
     }
   },
   "tags": ["type:app"],
