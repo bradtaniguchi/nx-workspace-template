@@ -101,12 +101,16 @@
       "options": {
         "commands": [
           {
-            "command": "npx compodoc -p ./tools/docs/tsconfig.docs.json --output=dist/docs/",
-            "description": "Generate Internal docs to dist/docs"
+            "command": "npx compodoc -p ./tools/docs/tsconfig.docs.json --output=dist/apps/internal-ng/docs",
+            "description": "Generate Internal docs to dist/apps/internal-ng/docs"
           },
           {
-            "command": "npx nx dep-graph --file=dist/dep-graph.html",
-            "description": "Generate dep-graph at dist/dep-graph.html"
+            "command": "npx nx dep-graph --file=dist/apps/internal-ng/dep-graph.html",
+            "description": "Generate dep-graph at dist/apps/internal-ng/dep-graph.html"
+          },
+          {
+            "command": "npx gh-pages --dir=dist/apps/internal-ng",
+            "description": "gh-page deploy internal-ng with generated assets"
           }
         ],
         "parallel": false
