@@ -52,12 +52,12 @@ jobs:
       - name: gen build matrix
         id: gen-build-matrix
         run: |
-          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF --batch=1)
+          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF)
           echo "::set-output name=BUILD_TASKS::$BUILD_TASKS"
       - name: gen lighthouse matrix
         id: gen-lighthouse-matrix
         run: |
-          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=1)
+          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF)
           echo "::set-output name=LIGHTHOUSE_TASKS::$LIGHTHOUSE_TASKS"
 
   # Prints the matrix output, useful for debugging
@@ -159,7 +159,7 @@ jobs:
       - test-affected
     strategy:
       matrix:
-        TASKS: ${{ fromJSON(needs.gen-matrixes.outputs.BUILD_TASKS) }}
+        TASK: ${{ fromJSON(needs.gen-matrixes.outputs.BUILD_TASKS) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
@@ -180,9 +180,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
       - name: print task-id
-        run: echo "${{ join(matrix.TASKS, ',') }}"
+        run: echo "${{ matrix.TASK }}"
       - name: run tasks
-        run: npx nx run-many --target=build --projects="${{ join(matrix.TASKS, ',') }}"
+        run: npx nx build --project="${{ matrix.TASK }}"
       - name: get build output
         id: get-build-output
         run: echo "build_output=$(ls -d ./dist/apps/*/)" >> $GITHUB_ENV
@@ -192,7 +192,7 @@ jobs:
       - name: save artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${{ github.sha }}
+          name: build-${{ matrix.TASK }}-${{ github.sha }}
           path: ${{ env.build_output }}
           retention-days: 1
 
@@ -210,7 +210,7 @@ jobs:
       - build-affected
     strategy:
       matrix:
-        TASKS: ${{ fromJSON(needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS) }}
+        TASK: ${{ fromJSON(needs.gen-matrixes.outputs.LIGHTHOUSE_TASKS) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
@@ -233,17 +233,16 @@ jobs:
       - name: install lhci
         run: npm install -g @lhci/cli
       - name: print task-id
-        run: echo "${{ join(matrix.TASKS, ',') }}"
+        run: echo "${{ matrix.TASK }}"
       - name: download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${{ github.sha }}
-          path: ./dist/apps/${{matrix.TASKS}}
+          name: build-${{ matrix.TASK }}-${{ github.sha }}
+          path: ./dist/apps/${{ matrix.TASK }}
       - name: print dist
         run: ls -R ./dist/apps
       - name: run tasks
-        run: npx nx run-many --target=lighthouse --projects="${{ join(matrix.TASKS, ',') }}"
+        run: npx nx ${{ matrix.TASK }}:lighthouse
   # TODO: add the following:
-  # lighthouse
   # e2e
   # deploy
