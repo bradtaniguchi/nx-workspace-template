@@ -52,12 +52,12 @@ jobs:
       - name: gen build matrix
         id: gen-build-matrix
         run: |
-          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF --batch=2)
+          BUILD_TASKS=$(npx nx workspace-generator gh-affected --target=build --head=$GITHUB_REF --batch=1)
           echo "::set-output name=BUILD_TASKS::$BUILD_TASKS"
       - name: gen lighthouse matrix
         id: gen-lighthouse-matrix
         run: |
-          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=2)
+          LIGHTHOUSE_TASKS=$(npx nx workspace-generator gh-affected --target=lighthouse --head=$GITHUB_REF --batch=1)
           echo "::set-output name=LIGHTHOUSE_TASKS::$LIGHTHOUSE_TASKS"
 
   # Prints the matrix output, useful for debugging
@@ -238,7 +238,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${{ github.sha }}
-          path: ./dist/apps
+          path: ./dist/apps/${{matrix.TASKS}}
       - name: print dist
         run: ls -R ./dist/apps
       - name: run tasks
