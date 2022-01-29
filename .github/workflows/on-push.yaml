@@ -238,6 +238,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-artifacts-${{ join(matrix.TASKS, '-') }}-${{ github.sha }}
+          path: ./dist/apps
       - name: run tasks
         run: npx nx run-many --target=lighthouse --projects="${{ join(matrix.TASKS, ',') }}"
   # TODO: add the following:
