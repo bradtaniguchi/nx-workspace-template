@@ -109,7 +109,7 @@
             "description": "Generate dep-graph at dist/apps/internal-ng/dep-graph.html"
           },
           {
-            "command": "npx gh-pages -d dist/apps/internal-ng",
+            "command": "npx gh-pages -d dist/apps/internal-ng -u 'github-actions-bot <support+actions@github.com>'",
             "description": "gh-page deploy internal-ng with generated assets"
           }
         ],

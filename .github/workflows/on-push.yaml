@@ -297,5 +297,7 @@ jobs:
         run: ls -R ./dist/apps
       - name: run tasks
         run: npx nx run ${{ matrix.TASK }}:deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # TODO: add the following:
   # e2e
