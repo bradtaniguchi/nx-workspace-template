@@ -11,20 +11,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 USER codespace
 
-# setup nvm using .nvmrc settings
-RUN git fetch
-RUN nvm use
-RUN nvm install
-RUN npm config delete prefix
-RUN nvm alias default node
-
 # update git settings
 RUN git config --global core.editor "nvim"
-
-# install deps
-RUN npm ci
-RUN npm i -g @nrwl/cli
-
 
 # update user settings
 RUN echo "alias vim='nvim'" >> ~/.bashrc
