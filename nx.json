@@ -20,7 +20,14 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e", "lighthouse"],
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "lighthouse",
+          "build-storybook"
+        ],
         "parallel": 1
       }
     }

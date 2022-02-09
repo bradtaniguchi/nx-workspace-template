@@ -1,5 +1,5 @@
 {
-  "forwardPorts": [4200],
+  "forwardPorts": [4200, 4400],
   "remoteEnv": {
     "DEV_ENV": "codespaces"
   },

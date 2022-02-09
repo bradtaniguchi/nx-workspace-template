@@ -9,6 +9,7 @@
     "internal-ng": "apps/internal-ng",
     "internal-ng-e2e": "apps/internal-ng-e2e",
     "script-loader": "libs/script-loader",
-    "storybook": "libs/storybook"
+    "storybook": "libs/storybook",
+    "storybook-e2e": "apps/storybook-e2e"
   }
 }
