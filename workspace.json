@@ -8,6 +8,7 @@
     "gh-codespaces": "libs/gh-codespaces",
     "internal-ng": "apps/internal-ng",
     "internal-ng-e2e": "apps/internal-ng-e2e",
-    "script-loader": "libs/script-loader"
+    "script-loader": "libs/script-loader",
+    "storybook": "libs/storybook"
   }
 }

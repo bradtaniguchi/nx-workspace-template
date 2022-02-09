@@ -25,7 +25,8 @@
       ],
       "@nx-workspace-template/script-loader": [
         "libs/script-loader/src/index.ts"
-      ]
+      ],
+      "@nx-workspace-template/storybook": ["libs/storybook/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

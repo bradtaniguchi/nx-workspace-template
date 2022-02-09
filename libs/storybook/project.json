@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/storybook",
+  "sourceRoot": "libs/storybook/src",
+  "prefix": "nx-workspace-template",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/storybook"],
+      "options": {
+        "jestConfig": "libs/storybook/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/storybook/src/**/*.ts",
+          "libs/storybook/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:lib"]
+}
