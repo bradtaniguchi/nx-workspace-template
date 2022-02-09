@@ -38,14 +38,6 @@
             "next": "*"
           }
         ],
-        "capitalized-comments": [
-          "error",
-          "always",
-          {
-            "ignorePattern": "pragma|ignored",
-            "ignoreInlineComments": true
-          }
-        ],
         "lines-around-comment": [
           "error",
           {
