@@ -71,6 +71,12 @@
       "skipTests": true,
       "inlineStyle": true
     },
+    "@nrwl/angular:scam": {
+      "style": "scss",
+      "changeDetection": "OnPush",
+      "skipTests": true,
+      "inlineStyle": true
+    },
     "@nrwl/angular:directive": {
       "skipTests": true
     }
