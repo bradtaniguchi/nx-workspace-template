@@ -16,3 +16,11 @@ To generate stories for a given project use:
 ```bash
 nx g @nrwl/angular:stories <project-name>
 ```
+
+## Running global storybook
+
+To run storybook, with all the stories use the following:
+
+```bash
+nx run storybook:storybook
+```

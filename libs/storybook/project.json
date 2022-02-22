@@ -24,6 +24,7 @@
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
+        "projectBuildConfig": "storybook:build-storybook",
         "uiFramework": "@storybook/angular",
         "port": 4400,
         "config": {
