@@ -24,3 +24,10 @@ To run storybook, with all the stories use the following:
 ```bash
 nx run storybook:storybook
 ```
+
+## Running storybook with composition:
+
+
+```
+nx run-many --target=storybook --all --parallel=2
+```

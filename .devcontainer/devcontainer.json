@@ -1,5 +1,5 @@
 {
-  "forwardPorts": [4200, 4400],
+  "forwardPorts": [4200, 4400, 4201],
   "portsAttributes": {
     "4200": {
       "label": "Angular",
