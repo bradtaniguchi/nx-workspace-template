@@ -41,6 +41,7 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "styles": ["libs/storybook/.storybook/theme.scss"],
         "uiFramework": "@storybook/angular",
         "outputPath": "dist/storybook/storybook",
         "config": {

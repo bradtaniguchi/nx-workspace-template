@@ -1,7 +1,13 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { MatIconModule } from '@angular/material/icon';
+import {
+  componentWrapperDecorator,
+  Meta,
+  moduleMetadata,
+  Story,
+} from '@storybook/angular';
 import { StorybookLandingComponent } from './storybook-landing.component';
 
 export default {
@@ -14,8 +20,12 @@ export default {
         FlexLayoutModule,
         MatCardModule,
         MatButtonModule,
+        MatIconModule,
       ],
     }),
+    componentWrapperDecorator(
+      (story) => `<div class="mat-app-background">${story}</div>`
+    ),
   ],
 } as Meta<StorybookLandingComponent>;
 

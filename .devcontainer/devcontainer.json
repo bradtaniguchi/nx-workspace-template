@@ -1,5 +1,17 @@
 {
   "forwardPorts": [4200, 4400],
+  "portsAttributes": {
+    "4200": {
+      "label": "Angular",
+      "onAutoForward": "notify",
+      "protocol": "https"
+    },
+    "4400": {
+      "label": "Storybook",
+      "onAutoForward": "notify",
+      "protocol": "https"
+    }
+  },
   "remoteEnv": {
     "DEV_ENV": "codespaces"
   },
