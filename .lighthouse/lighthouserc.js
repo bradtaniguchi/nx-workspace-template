@@ -6,6 +6,7 @@ module.exports = {
       budgetsFile: './.lighthouse/lighthouse-budget.json',
     },
     collect: {
+      port: 4200,
       isSinglePageApplication: true,
       // wait for only 10 seconds
       maxWaitForLoad: 10_000,

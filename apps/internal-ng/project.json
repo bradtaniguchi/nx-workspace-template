@@ -23,7 +23,6 @@
       },
       "configurations": {
         "production": {
-          "deployUrl": "nx-workspace-template/",
           "budgets": [
             {
               "type": "initial",
@@ -95,6 +94,12 @@
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.url=/nx-workspace-template --collect.staticDistDir=./dist/apps/internal-ng"
+      }
+    },
+    "smoke": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx http-server dist/apps/internal-ng/ -p 4200 --proxy http://localhost:4200?"
       }
     },
     "deploy": {
