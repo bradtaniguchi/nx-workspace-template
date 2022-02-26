@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -55,7 +56,16 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
           }
     ),
   ],
-  providers: [],
+  providers: [
+    ...(environment.production
+      ? [
+          {
+            provide: APP_BASE_HREF,
+            useValue: 'nx-workspace-template',
+          },
+        ]
+      : []),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
