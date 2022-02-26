@@ -13,6 +13,9 @@ module.exports = {
       numberOfRuns: 1,
       // this is for local, not sure if it works for CI
       chromePath: '/usr/bin/google-chrome',
+      settings: {
+        chromeFlags: '--disable-gpu --no-sandbox',
+      },
     },
   },
 };
