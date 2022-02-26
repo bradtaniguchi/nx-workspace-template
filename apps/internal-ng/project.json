@@ -23,6 +23,7 @@
       },
       "configurations": {
         "production": {
+          "deployUrl": "nx-workspace-template/",
           "budgets": [
             {
               "type": "initial",
