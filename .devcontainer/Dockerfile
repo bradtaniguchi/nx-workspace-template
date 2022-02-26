@@ -9,6 +9,13 @@ USER root
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends neovim
 
+# Install chrome
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+RUN dpkg -i google-chrome-stable_current_amd64.deb
+
+RUN apt -f install -y
+
 USER codespace
 
 # update git settings
