@@ -20,7 +20,7 @@
         ],
         "styles": ["apps/internal-ng/src/styles.scss"],
         "scripts": [],
-        "baseHref": "/nx-workspace-template/"
+        "baseHref": "https://bradtaniguchi.dev/nx-workspace-template/"
       },
       "configurations": {
         "production": {
