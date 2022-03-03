@@ -19,11 +19,11 @@
           "apps/internal-ng/src/assets"
         ],
         "styles": ["apps/internal-ng/src/styles.scss"],
-        "scripts": [],
-        "baseHref": "https://bradtaniguchi.dev/nx-workspace-template/"
+        "scripts": []
       },
       "configurations": {
         "production": {
+          "baseHref": "https://bradtaniguchi.dev/nx-workspace-template/",
           "budgets": [
             {
               "type": "initial",
@@ -94,7 +94,7 @@
     "lighthouse": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.url=/nx-workspace-template --collect.staticDistDir=./dist/apps/internal-ng"
+        "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.url=https://bradtaniguchi.dev/nx-workspace-template/ --collect.staticDistDir=./dist/apps/internal-ng"
       }
     },
     "smoke": {
