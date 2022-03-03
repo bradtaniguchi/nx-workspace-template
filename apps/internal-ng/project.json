@@ -19,7 +19,8 @@
           "apps/internal-ng/src/assets"
         ],
         "styles": ["apps/internal-ng/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "baseHref": "/nx-workspace-template/"
       },
       "configurations": {
         "production": {
@@ -113,6 +114,10 @@
           {
             "command": "npx nx dep-graph --file=dist/apps/internal-ng/dep-graph.html",
             "description": "Generate dep-graph at dist/apps/internal-ng/dep-graph.html"
+          },
+          {
+            "command": "cp -r dist/apps/internal-ng/index.html dist/apps/internal-ng/404.html",
+            "description": "Create 404 page for missing routes"
           },
           {
             "command": "npx gh-pages -d dist/apps/internal-ng -u 'github-actions-bot <support+actions@github.com>'",
