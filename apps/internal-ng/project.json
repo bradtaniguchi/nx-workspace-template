@@ -94,7 +94,17 @@
     "lighthouse": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.url=https://bradtaniguchi.dev/nx-workspace-template/ --collect.staticDistDir=./dist/apps/internal-ng"
+        "commands": [
+          {
+            "command": "node apps/internal-ng/scripts/pre-lighthouse.js",
+            "description": "Update base-href so lighthouse works"
+          },
+          {
+            "command": "npx lhci autorun --config=./.lighthouse/lighthouserc.js --collect.staticDistDir=./dist/apps/internal-ng",
+            "description": "Run lighthouse"
+          }
+        ],
+        "parallel": false
       }
     },
     "smoke": {
