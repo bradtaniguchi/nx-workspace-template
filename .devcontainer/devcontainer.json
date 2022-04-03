@@ -6,7 +6,6 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "postCreateCommand": "bash -i .devcontainer/post-create.sh",
   "extensions": [
     "aaron-bond.better-comments",
     "Angular.ng-template",
