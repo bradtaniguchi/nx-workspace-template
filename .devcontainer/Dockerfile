@@ -19,19 +19,17 @@ RUN apt-get update \
 
 USER codespace
 
-# Install nvm
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# Install node 16.13
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs
 
-# Setup NVM
-RUN nvm use \
-    && nvm install \
-    && npm config delete prefix \
-    && nvm alias default node
+# confirm installation
+RUN node -v
+RUN npm -v
 
 # install npm packages
 RUN npm ci \
-    && npm i -g @nrwl/cli \
-    && npm i -g nx
+    && npm i -g @nrwl/cli nx yarn
 
 # update git settings
 RUN git fetch
