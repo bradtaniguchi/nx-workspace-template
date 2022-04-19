@@ -21,29 +21,17 @@ USER codespace
 
 ENV NODE_VERSION=16.13.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-ENV NVM_DIR=/root/.nvm
+ENV NVM_DIR=/home/codespace/.nvm
+RUN rm -rf /home/codespace/.npmrc
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN node --version
-RUN npm --version
+ENV PATH="/home/codespace/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
+# install global npm packages
+RUN npm i -g @nrwl/cli nx yarn
 
-# install npm packages
-RUN npm ci \
-    && npm i -g @nrwl/cli nx yarn
-
-# update git settings
-RUN git fetch
+# update git settings, neovim should be configured
+# by dotfiles later
 RUN git config --global core.editor "nvim"
-
-# update user settings
-RUN echo "alias vim='nvim'" >> ~/.bashrc
-RUN echo "export VISUAL=nvim" >> ~/.bashrc
-RUN echo "export EDITOR=nvim" >> ~/.bashrc
-RUN echo "# auto-completion\n" \
-  "if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then\n" \
-  "  . /opt/local/etc/profile.d/bash_completion.sh\n" \
-  "fi\n" >> ~/.bashrc
 
