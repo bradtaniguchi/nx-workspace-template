@@ -7,7 +7,7 @@ USER root
 
 # install dependencies here
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends neovim git wget gnupg \
+    && apt-get -y install --no-install-recommends neovim git wget gnupg curl \
     && apt-get clean
 
 # Install latest chrome stable package, required for cypress
@@ -19,30 +19,19 @@ RUN apt-get update \
 
 USER codespace
 
-# Install nvm
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+ENV NODE_VERSION=16.13.0
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+ENV NVM_DIR=/home/codespace/.nvm
+RUN rm -rf /home/codespace/.npmrc
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+ENV PATH="/home/codespace/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
-# Setup NVM
-RUN nvm use \
-    && nvm install \
-    && npm config delete prefix \
-    && nvm alias default node
+# install global npm packages
+RUN npm i -g @nrwl/cli nx yarn
 
-# install npm packages
-RUN npm ci \
-    && npm i -g @nrwl/cli \
-    && npm i -g nx
-
-# update git settings
-RUN git fetch
+# update git settings, neovim should be configured
+# by dotfiles later
 RUN git config --global core.editor "nvim"
-
-# update user settings
-RUN echo "alias vim='nvim'" >> ~/.bashrc
-RUN echo "export VISUAL=nvim" >> ~/.bashrc
-RUN echo "export EDITOR=nvim" >> ~/.bashrc
-RUN echo "# auto-completion\n" \
-  "if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then\n" \
-  "  . /opt/local/etc/profile.d/bash_completion.sh\n" \
-  "fi\n" >> ~/.bashrc
 
